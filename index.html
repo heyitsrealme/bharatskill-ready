@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-translate="header.title">BharatSkill Connect - Hyperlocal P2P Skill Exchange</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Kalam:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-hands-helping"></i>
+                    <h1 data-translate="header.title">BharatSkill Connect</h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="index.html" class="nav-home active" data-translate="nav.home">Home</a></li>
+                        <li><a href="browse.html" class="nav-browse" data-translate="nav.browse">Browse Skills</a></li>
+                        
+                        <li><a href="about.html" class="nav-about" data-translate="nav.about">About Us</a></li>
+                        <li><a href="profile.html" class="nav-profile" data-translate="nav.profile">Profile</a></li>
+                    </ul>
+                </nav>
+                <div class="auth-buttons">
+                    <button class="btn btn-outline" id="loginBtn" data-translate="auth.login">Login</button>
+                    <button class="btn btn-primary" id="signupBtn" data-translate="auth.signup">Sign Up</button>
+                    <button class="btn btn-outline" id="logoutBtn" style="display: none;" data-translate="auth.logout">Logout</button>
+                    <button class="btn btn-primary" id="listSkillBtn" style="display: none;" data-translate="auth.listSkill">List Your Skill</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="search-language-container">
+        <div class="search-container">
+            <select class="search-filter" id="searchFilter">
+                <option value="skill" data-translate="search.filter.skill">By Skill</option>
+                <option value="location" data-translate="search.filter.location">By Location</option>
+                <option value="timing" data-translate="search.filter.timing">By Timing</option>
+                <option value="preference" data-translate="search.filter.preference">By Preference</option>
+            </select>
+            <input type="text" class="search-input" id="searchInput" data-translate-placeholder="search.placeholder" placeholder="Search here...">
+            <button class="search-button"><i class="fas fa-search"></i> <span data-translate="search.button">Search</span></button>
+        </div>
+        <div class="language-selector">
+            <div class="language-btn" id="languageBtn">
+                <i class="fas fa-globe"></i>
+                <span id="currentLanguage">English</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="language-dropdown" id="languageDropdown">
+                <div class="language-option active" data-lang="en"><span>English</span></div>
+                <div class="language-option" data-lang="hi"><span>हिन्दी (Hindi)</span></div>
+                <div class="language-option" data-lang="gu"><span>ગુજરાતી (Gujarati)</span></div>
+                <div class="language-option" data-lang="bn"><span>বাংলা (Bengali)</span></div>
+                <div class="language-option" data-lang="ta"><span>தமிழ் (Tamil)</span></div>
+                <div class="language-option" data-lang="te"><span>తెలుగు (Telugu)</span></div>
+                <div class="language-option" data-lang="mr"><span>मराठी (Marathi)</span></div>
+                <div class="language-option" data-lang="kn"><span>ಕನ್ನಡ (Kannada)</span></div>
+                <div class="language-option" data-lang="ml"><span>മലയാളം (Malayalam)</span></div>
+                <div class="language-option" data-lang="pa"><span>ਪੰਜਾਬੀ (Punjabi)</span></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-content container">
+        <section class="hero">
+            <div class="hero-content">
+                <h1 data-translate="hero.title">BharatSkill Connect</h1>
+                <p data-translate="hero.subtitle">Hyperlocal P2P Skill Exchange<br>Connect local Gurus and Shishyas for skill exchange and livelihood.</p>
+            </div>
+        </section>
+    </div>
+
+    <section class="features">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-translate="features.title">Why choose BharatSkill Connect? </h2>
+                <p data-translate="features.subtitle">Empowering local Gurus and Shishyas with essential tools for seamless skill sharing.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-lock"></i>
+                    </div>
+                    <h3 data-translate="features.auth.title">Hyperlocal skill sharing</h3>
+                    <p data-translate="features.auth.description">Learn from experts in your community.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-list"></i>
+                    </div>
+                    <h3 data-translate="features.skills.title">Trusted Expert Network</h3>
+                    
+                    <p data-translate="features.skills.description">Easy browsing and showcasing of skills with detailed reviews.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3 data-translate="features.geolocation.title">Geolocation Search</h3>
+                    <p data-translate="features.geolocation.description">Find skilled peers near you quickly and easily.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3 data-translate="features.messaging.title">Seamless booking & chat</h3>
+                    <p data-translate="features.messaging.description">Book sessions and chat effortlessly.</p>
+                </div>
+                
+                
+                        
+                    </div>
+                    
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="how-it-works">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-translate="howitworks.title">How It Works</h2>
+                <p data-translate="howitworks.subtitle">Get started with BharatSkill Connect in three simple steps</p>
+            </div>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3 data-translate="howitworks.step1.title">Create Account</h3>
+                    <p data-translate="howitworks.step1.description">Sign up and create your profile as Guru or Shishya.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3 data-translate="howitworks.step2.title">Browse & Connect</h3>
+                    <p data-translate="howitworks.step2.description">Search local skills or list your own offerings.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3 data-translate="howitworks.step3.title">Learn & Exchange</h3>
+                    <p data-translate="howitworks.step3.description">Engage in skill exchange for livelihood and growth.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-translate="testimonials.title">What Our Users Say</h2>
+                <p data-translate="testimonials.subtitle">Real stories from our community members</p>
+            </div>
+            <div class="testimonial-cards">
+                <div class="testimonial-card">
+                    <div class="testimonial-text" data-translate="testimonials.test1.text">"I found an amazing coding mentor through BharatSkill Connect. Now I'm building my own apps!"</div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">RK</div>
+                        <div>
+                            <h4 data-translate="testimonials.test1.author">Rahul Kumar</h4>
+                            <p data-translate="testimonials.test1.role">Software Developer</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text" data-translate="testimonials.test2.text">"As a traditional pottery artist, I've connected with students who are genuinely interested in learning our crafts."</div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">PM</div>
+                        <div>
+                            <h4 data-translate="testimonials.test2.author">Priya Mehta</h4>
+                            <p data-translate="testimonials.test2.role">Pottery Artist</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text" data-translate="testimonials.test3.text">"The hyperlocal approach helped me find a Spanish tutor in my neighborhood. It's convenient and effective!"</div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">AS</div>
+                        <div>
+                            <h4 data-translate="testimonials.test3.author">Anjali Singh</h4>
+                            <p data-translate="testimonials.test3.role">Language Student</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3 data-translate="footer.title">BharatSkill Connect</h3>
+                    <p data-translate="footer.description">Empowering communities through skill exchange and learning.</p>
+                </div>
+                <div class="footer-column">
+                    <h3 data-translate="footer.links.title">Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html" class="nav-home" data-translate="nav.home">Home</a></li>
+                        <li><a href="browse.html" class="nav-browse" data-translate="nav.browse">Browse Skills</a></li>
+                        <li><a href="dashboard.html" class="nav-dashboard" data-translate="nav.dashboard">Dashboard</a></li>
+                        <li><a href="about.html" class="nav-about" data-translate="nav.about">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3 data-translate="footer.legal.title">Legal</h3>
+                    <ul>
+                        <li><a href="#" data-translate="footer.legal.privacy">Privacy Policy</a></li>
+                        <li><a href="#" data-translate="footer.legal.terms">Terms of Service</a></li>
+                        <li><a href="#" data-translate="footer.legal.safety">Safety Guidelines</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3 data-translate="footer.follow.title">Follow Us</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright" data-translate="footer.copyright">&copy; 2025 BharatSkill Connect. All rights reserved.</div>
+        </div>
+    </footer>
+
+    <div class="modal" id="authModal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeAuthModal">&times;</span>
+            <h2 class="modal-title" id="authTitle" data-translate="auth.login.title">Login</h2>
+            <form id="authForm">
+                <div class="form-group">
+                    <label for="email" data-translate="auth.email.label">Email</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password" data-translate="auth.password.label">Password</label>
+                    <input type="password" id="password" required>
+                </div>
+                <button type="submit" class="btn btn-primary" id="authSubmit" style="width: 100%;" data-translate="auth.login.button">Login</button>
+            </form>
+            <p style="margin-top: 15px; text-align: center;" data-translate="auth.switch.text">
+                Don't have an account? <a href="#" id="switchToSignup" data-translate="auth.switch.signup">Signup here</a>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        const translations = {
+            'en': {
+                'header.title': 'BharatSkill Connect',
+                'nav.home': 'Home',
+                'nav.browse': 'Browse Skills',
+                'nav.dashboard': 'Dashboard',
+                'nav.about': 'About Us',
+                'nav.profile': 'Profile',
+                'auth.login': 'Login',
+                'auth.signup': 'Sign Up',
+                'auth.logout': 'Logout',
+                'auth.listSkill': 'List Your Skill',
+                'auth.login.title': 'Login',
+                'auth.signup.title': 'Sign Up',
+                'auth.login.button': 'Login',
+                'auth.signup.button': 'Sign Up',
+                'auth.email.label': 'Email',
+                'auth.password.label': 'Password',
+                'auth.switch.text': "Don't have an account?",
+                'auth.switch.signup': 'Signup here',
+                'auth.switch.login': 'Login here',
+                'search.placeholder': 'Search here...',
+                'search.button': 'Search',
+                'search.filter.skill': 'By Skill',
+                'search.filter.location': 'By Location',
+                'search.filter.timing': 'By Timing',
+                'search.filter.preference': 'By Preference',
+                'hero.title': 'BharatSkill Connect',
+                'hero.subtitle': 'Hyperlocal P2P Skill Exchange\nConnect local Gurus and Shishyas for skill exchange and livelihood.',
+                'features.title': 'Why choose BharatSkill Connect? ',
+                'features.subtitle': 'Empowering local Gurus and Shishyas with essential tools for seamless skill sharing.',
+                'features.auth.title': 'Hyperlocal skill sharing',
+                'features.auth.description': 'Learn from experts in your community.',
+                'features.skills.title': 'trusted expert network',
+                'features.skills.description': 'Easy browsing and showcasing of skills with detailed reviews.',
+                'features.geolocation.title': 'Geolocation Search',
+                'features.geolocation.description': 'Find skilled peers near you quickly and easily.',
+                'features.messaging.title': 'Seamless booking & chat',
+                'features.messaging.description': 'Connect and communicate effortlessly.',
+                
+            ,
+                'howitworks.title': 'How It Works',
+                'howitworks.subtitle': 'Get started with BharatSkill Connect in three simple steps',
+                'howitworks.step1.title': 'Create Account',
+                'howitworks.step1.description': 'Sign up and create your profile as Guru or Shishya.',
+                'howitworks.step2.title': 'Browse & Connect',
+                'howitworks.step2.description': 'Search local skills or list your own offerings.',
+                'howitworks.step3.title': 'Learn & Exchange',
+                'howitworks.step3.description': 'Engage in skill exchange for livelihood and growth.',
+                'testimonials.title': 'What Our Users Say',
+                'testimonials.subtitle': 'Real stories from our community members',
+                'testimonials.test1.text': '"I found an amazing coding mentor through BharatSkill Connect. Now I\'m building my own apps!"',
+                'testimonials.test1.author': 'Rahul Kumar',
+                'testimonials.test1.role': 'Software Developer',
+                'testimonials.test2.text': '"As a traditional pottery artist, I\'ve connected with students who are genuinely interested in learning our crafts."',
+                'testimonials.test2.author': 'Priya Mehta',
+                'testimonials.test2.role': 'Pottery Artist',
+                'testimonials.test3.text': '"The hyperlocal approach helped me find a Spanish tutor in my neighborhood. It\'s convenient and effective!"',
+                'testimonials.test3.author': 'Anjali Singh',
+                'testimonials.test3.role': 'Language Student',
+                'footer.title': 'BharatSkill Connect',
+                'footer.description': 'Empowering communities through skill exchange and learning.',
+                'footer.links.title': 'Quick Links',
+                'footer.legal.title': 'Legal',
+                'footer.legal.privacy': 'Privacy Policy',
+                'footer.legal.terms': 'Terms of Service',
+                'footer.legal.safety': 'Safety Guidelines',
+                'footer.follow.title': 'Follow Us',
+                'footer.copyright': '© 2025 BharatSkill Connect. All rights reserved.'
+            },
+            'hi': {
+                'header.title': 'भारतस्किल कनेक्ट',
+                'nav.home': 'होम',
+                'nav.browse': 'कौशल ब्राउज़ करें',
+                'nav.dashboard': 'डैशबोर्ड',
+                'nav.about': 'हमारे बारे में',
+                'nav.profile': 'प्रोफ़ाइल',
+                'auth.login': 'लॉगिन',
+                'auth.signup': 'साइन अप',
+                'auth.logout': 'लॉगआउट',
+                'auth.listSkill': 'अपना कौशल सूचीबद्ध करें',
+                'auth.login.title': 'लॉगिन',
+                'auth.signup.title': 'साइन अप',
+                'auth.login.button': 'लॉगिन',
+                'auth.signup.button': 'साइन अप',
+                'auth.email.label': 'ईमेल',
+                'auth.password.label': 'पासवर्ड',
+                'auth.switch.text': 'खाता नहीं है?',
+                'auth.switch.signup': 'यहां साइन अप करें',
+                'auth.switch.login': 'यहां लॉगिन करें',
+                'search.placeholder': 'कौशल, गुरु, या कार्यशालाएं खोजें...',
+                'search.button': 'खोज',
+                'search.filter.skill': 'कौशल द्वारा',
+                'search.filter.location': 'स्थान द्वारा',
+                'search.filter.timing': 'समय द्वारा',
+                'search.filter.preference': 'प्राथमिकता द्वारा',
+                'hero.title': 'भारतस्किल कनेक्ट',
+                'hero.subtitle': 'हाइपरलोकल पी2पी कौशल विनिमय\nस्थानीय गुरुओं और शिष्यों को कौशल विनिमय और आजीविका के लिए जोड़ें।',
+                'features.title': 'आवश्यकताएँ, सरल बनाई गई',
+                'features.subtitle': 'स्थानीय गुरुओं और शिष्यों को निर्बाध कौशल साझा करने के लिए आवश्यक उपकरणों के साथ सशक्त बनाना।',
+                'features.auth.title': 'उपयोगकर्ता प्रमाणीकरण',
+                'features.auth.description': 'सुरक्षित साइन अप, लॉगिन और प्रोफाइल प्रबंधन के लिए एक सुरक्षित अनुभव।',
+                'features.skills.title': 'कौशल सूचीकरण',
+                'features.skills.description': 'विस्तृत समीक्षाओं के साथ कौशलों की आसान ब्राउज़िंग और प्रदर्शन।',
+                'features.geolocation.title': 'जियोलोकेशन खोज',
+                'features.geolocation.description': 'अपने पास कुशल साथियों को जल्दी और आसानी से खोजें।',
+                'features.messaging.title': 'संदेश',
+                'features.messaging.description': 'बुद्धिमानी और तुरंत संवाद करें।',
+                
+                
+                'howitworks.title': 'यह कैसे काम करता है',
+                'howitworks.subtitle': 'तीन सरल चरणों में भारतस्किल कनेक्ट शुरू करें',
+                'howitworks.step1.title': 'खाता बनाएं',
+                'howitworks.step1.description': 'साइन अप करें और गुरु या शिष्य के रूप में अपनी प्रोफाइल बनाएं।',
+                'howitworks.step2.title': 'ब्राउज़ और कनेक्ट करें',
+                'howitworks.step2.description': 'स्थानीय कौशल खोजें या अपनी पेशकशें सूचीबद्ध करें।',
+                'howitworks.step3.title': 'सीखें और विनिमय करें',
+                'howitworks.step3.description': 'आजीविका और विकास के लिए कौशल विनिमय में संलग्न हों।',
+                'testimonials.title': 'हमारे उपयोगकर्ता क्या कहते हैं',
+                'testimonials.subtitle': 'हमारे समुदाय के सदस्यों की वास्तविक कहानियाँ',
+                'testimonials.test1.text': '"भारतस्किल कनेक्ट के माध्यम से मुझे एक शानदार कोडिंग मेंटर मिला। अब मैं अपने ऐप्स बना रहा हूँ!"',
+                'testimonials.test1.author': 'राहुल कुमार',
+                'testimonials.test1.role': 'सॉफ्टवेयर डेवलपर',
+                'testimonials.test2.text': '"एक पारंपरिक मिट्टी के बर्तन कलाकार के रूप में, मैंने उन छात्रों से जुड़ा जो हमारी कला सीखने में वास्तव में रुचि रखते हैं।"',
+                'testimonials.test2.author': 'प्रिया मेहता',
+                'testimonials.test2.role': 'मिट्टी के बर्तन कलाकार',
+                'testimonials.test3.text': '"हाइपरलोकल दृष्टिकोण ने मुझे मेरे पड़ोस में एक स्पैनिश ट्यूटर खोजने में मदद की। यह सुविधाजनक और प्रभावी है!"',
+                'testimonials.test3.author': 'अंजलि सिंह',
+                'testimonials.test3.role': 'भाषा छात्र',
+                'footer.title': 'भारतस्किल कनेक्ट',
+                'footer.description': 'कौशल विनिमय और सीखने के माध्यम से समुदायों को सशक्त बनाना।',
+                'footer.links.title': 'त्वरित लिंक',
+                'footer.legal.title': 'कानूनी',
+                'footer.legal.privacy': 'गोपनीयता नीति',
+                'footer.legal.terms': 'सेवा की शर्तें',
+                'footer.legal.safety': 'सुरक्षा दिशानिर्देश',
+                'footer.follow.title': 'हमें फॉलो करें',
+                'footer.copyright': '© 2025 भारतस्किल कनेक्ट। सभी अधिकार सुरक्षित।'
+            },
+            'gu': {
+                'header.title': 'ભારતસ્કિલ કનેક્ટ',
+                'nav.home': 'હોમ',
+                'nav.browse': 'કૌશલ્યો બ્રાઉઝ કરો',
+                'nav.dashboard': 'ડેશબોર્ડ',
+                'nav.about': 'અમારા વિશે',
+                'nav.profile': 'પ્રોફાઇલ',
+                'auth.login': 'લૉગિન',
+                'auth.signup': 'સાઇન અપ',
+                'auth.logout': 'લૉગઆઉટ',
+                'auth.listSkill': 'તમારું કૌશલ્ય સૂચિબદ્ધ કરો',
+                'auth.login.title': 'લૉગિન',
+                'auth.signup.title': 'સાઇન અप',
+                'auth.login.button': 'લૉગિન',
+                'auth.signup.button': 'સાઇન અપ',
+                'auth.email.label': 'ઈમેલ',
+                'auth.password.label': 'પાસવર્ડ',
+                'auth.switch.text': 'ખાતું નથી?',
+                'auth.switch.signup': 'અહીં સાઇન અપ કરો',
+                'auth.switch.login': 'અહીં લૉગિન કરો',
+                'search.placeholder': 'કૌશલ્યો, ગુરુઓ, અથવા વર્કશોપ્સ શોધો...',
+                'search.button': 'શોધો',
+                'search.filter.skill': 'કૌશલ્ય દ્વારા',
+                'search.filter.location': 'સ્થાન દ્વારા',
+                'search.filter.timing': 'સમય દ્વારા',
+                'search.filter.preference': 'પ્રાથમિકતા દ્વારા',
+                'hero.title': 'ભારતસ્કિલ કનેક્ટ',
+                'hero.subtitle': 'હાઇપરલોકલ P2P કૌશલ્ય વિનિમય\nસ્થાનિક ગુરુઓ અને શિષ્યોને કૌશલ્ય વિનિમય અને આજીવિકા માટે જોડો.',
+                'features.title': 'આવશ્યકતાઓ, સરળ બનાવેલ',
+                'features.subtitle': 'સ્થાનિક ગુરુઓ અને શિષ્યોને નિર્બાધ કૌશલ્ય સાઝા કરવા માટે આવશ્યક સાધનો સાથે સશક્તિકરણ.',
+                'features.auth.title': 'વપરાશકર્તા પ્રમાણીકરણ',
+                'features.auth.description': 'સુરક્ષિત સાઇન અપ, લૉગિન અને પ્રોફાઇલ મેનેજમેન્ટ માટે સલામત અનુભવ.',
+                'features.skills.title': 'કૌશલ્ય સૂચિબદ્ધ',
+                'features.skills.description': 'વિગતવાર સમીક્ષાઓ સાથે કૌશલ્યોની સરળ બ્રાઉઝિંગ અને પ્રદર્શન.',
+                'features.geolocation.title': 'જીઓલોકેશન શોધ',
+                'features.geolocation.description': 'તમારી નજીક કુશળ સાથીઓને ઝડપથી અને સરળતાથી શોધો.',
+                'features.messaging.title': 'સંદેશ',
+                'features.messaging.description': 'બુદ્ધિપૂર્વક અને તાત્કાલિક સંપર્ક કરો.',
+
+                'howitworks.title': 'તે કેવી રીતે કામ કરે છે',
+                'howitworks.subtitle': 'ત્રણ સરળ પગલાંમાં ભારતસ્કિલ કનેક્ટ શરૂ કરો',
+                'howitworks.step1.title': 'ખાતું બનાવો',
+                'howitworks.step1.description': 'સાઇન અપ કરો અને ગુરુ અથવા શિષ્ય તરીકે તમારી પ્રોફાઇલ બનાવો.',
+                'howitworks.step2.title': 'બ્રાઉઝ અને જોડાઓ',
+                'howitworks.step2.description': 'સ્થાનિક કૌશલ્યો શોધો અથવા તમારી પોતાની ઓફરો સૂચિબદ્ધ કરો.',
+                'howitworks.step3.title': 'શીખો અને વિનિમય કરો',
+                'howitworks.step3.description': 'આજીવિકા અને વિકાસ માટે કૌશલ્ય વિનિમયમાં સામેલ થાઓ.',
+                'testimonials.title': 'અમારા વપરાશકર્તાઓ શું કહે છે',
+                'testimonials.subtitle': 'અમારા સમુદાયના સભ્યોની વાસ્તવિક કથાઓ',
+                'testimonials.test1.text': '"ભારતસ્કિલ કનેક્ટ દ્વારા મને એક અદ્ભુત કોડિંગ મેન્ટર મળ્યો. હવે હું મારી પોતાની એપ્સ બનાવું છું!"',
+                'testimonials.test1.author': 'રાહુલ કુમાર',
+                'testimonials.test1.role': 'સૉફ્ટવેર ડેવલપર',
+                'testimonials.test2.text': '"એક પરંપરાગત માટીકામ કલાકાર તરીકે, મેં એવા વિદ્યાર્થીઓ સાથે જોડાણ કર્યું જેઓ અમારી કળાઓ શીખવામાં ખરેખર રસ ધરાવે છે."',
+                'testimonials.test2.author': 'પ્રિયા મહેતા',
+                'testimonials.test2.role': 'માટીકામ કલાકાર',
+                'testimonials.test3.text': '"હાઇપરલોકલ અભિગમે મને મારા પડોશમાં સ્પેનિશ શિક્ષક શોધવામાં મદદ કરી. તે અનુકૂળ અને અસરકારક છે!"',
+                'testimonials.test3.author': 'અંજલિ સિંઘ',
+                'testimonials.test3.role': 'ભાષા વિદ્યાર્થી',
+                'footer.title': 'ભારતસ્કિલ કનેક્ટ',
+                'footer.description': 'કૌશલ્ય વિનિમય અને શીખવા દ્વારા સમુદાયોને સશક્ત બનાવવું.',
+                'footer.links.title': 'ઝડપી લિંક્સ',
+                'footer.legal.title': 'કાયદેસર',
+                'footer.legal.privacy': 'ગોપનીયતા નીતિ',
+                'footer.legal.terms': 'સેવાની શરતો',
+                'footer.legal.safety': 'સલામતી માર્ગદર્શિકા',
+                'footer.follow.title': 'અમને અનુસરો',
+                'footer.copyright': '© 2025 ભારતસ્કિલ કનેક્ટ. બધા હક્કો અનામત.'
+            }
+        };
+
+        function updateContentLanguage(lang) {
+            document.querySelectorAll('[data-translate]').forEach(element => {
+                const key = element.getAttribute('data-translate');
+                if (translations[lang] && translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+            document.querySelectorAll('[data-translate-placeholder]').forEach(element => {
+                const key = element.getAttribute('data-translate-placeholder');
+                if (translations[lang] && translations[lang][key]) {
+                    element.placeholder = translations[lang][key];
+                }
+            });
+            const currentLanguage = document.getElementById('currentLanguage');
+            if (currentLanguage) {
+                currentLanguage.textContent = lang === 'en' ? 'English' : lang === 'hi' ? 'हिन्दी (Hindi)' : 'ગુજરાતી (Gujarati)';
+            }
+            const languageDropdown = document.getElementById('languageDropdown');
+            if (languageDropdown) {
+                languageDropdown.querySelectorAll('.language-option').forEach(option => {
+                    option.classList.toggle('active', option.dataset.lang === lang);
+                });
+            }
+        }
+
+        function initAuthModal() {
+            const authModal = document.getElementById('authModal');
+            const closeAuthModal = document.getElementById('closeAuthModal');
+            const authForm = document.getElementById('authForm');
+            const authTitle = document.getElementById('authTitle');
+            const authSubmit = document.getElementById('authSubmit');
+            const switchToSignup = document.getElementById('switchToSignup');
+            const loginBtn = document.getElementById('loginBtn');
+            const signupBtn = document.getElementById('signupBtn');
+            const logoutBtn = document.getElementById('logoutBtn');
+            const listSkillBtn = document.getElementById('listSkillBtn');
+
+            let isSignup = false;
+
+            loginBtn.addEventListener('click', () => {
+                authModal.style.display = 'flex';
+                authTitle.textContent = translations[localStorage.getItem('preferredLanguage') || 'en']['auth.login.title'];
+                authSubmit.textContent = translations[localStorage.getItem('preferredLanguage') || 'en']['auth.login.button'];
+                isSignup = false;
+            });
+
+            signupBtn.addEventListener('click', () => {
+                authModal.style.display = 'flex';
+                authTitle.textContent = translations[localStorage.getItem('preferredLanguage') || 'en']['auth.signup.title'];
+                authSubmit.textContent = translations[localStorage.getItem('preferredLanguage') || 'en']['auth.signup.button'];
+                isSignup = true;
+            });
+
+            closeAuthModal.addEventListener('click', () => {
+                authModal.style.display = 'none';
+                authForm.reset();
+            });
+
+            switchToSignup.addEventListener('click', (e) => {
+                e.preventDefault();
+                isSignup = !isSignup;
+                authTitle.textContent = translations[localStorage.getItem('preferredLanguage') || 'en'][isSignup ? 'auth.signup.title' : 'auth.login.title'];
+                authSubmit.textContent = translations[localStorage.getItem('preferredLanguage') || 'en'][isSignup ? 'auth.signup.button' : 'auth.login.button'];
+            });
+
+            authForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+                if (isSignup) {
+                    localStorage.setItem('userEmail', email);
+                    localStorage.setItem('isLoggedIn', 'true');
+                    alert('Sign up successful!');
+                } else {
+                    localStorage.setItem('userEmail', email);
+                    localStorage.setItem('isLoggedIn', 'true');
+                    alert('Login successful!');
+                }
+                authModal.style.display = 'none';
+                authForm.reset();
+                updateAuthButtons();
+            });
+
+            logoutBtn.addEventListener('click', () => {
+                localStorage.removeItem('isLoggedIn');
+                localStorage.removeItem('userEmail');
+                updateAuthButtons();
+                window.location.href = 'index.html';
+            });
+        }
+
+        function updateAuthButtons() {
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            const loginBtn = document.getElementById('loginBtn');
+            const signupBtn = document.getElementById('signupBtn');
+            const logoutBtn = document.getElementById('logoutBtn');
+            const listSkillBtn = document.getElementById('listSkillBtn');
+            if (loginBtn) loginBtn.style.display = isLoggedIn ? 'none' : 'inline-block';
+            if (signupBtn) signupBtn.style.display = isLoggedIn ? 'none' : 'inline-block';
+            if (logoutBtn) logoutBtn.style.display = isLoggedIn ? 'inline-block' : 'none';
+            if (listSkillBtn) listSkillBtn.style.display = isLoggedIn ? 'inline-block' : 'none';
+        }
+
+        function initLanguageSelector() {
+            const languageBtn = document.getElementById('languageBtn');
+            const languageDropdown = document.getElementById('languageDropdown');
+            if (!languageBtn || !languageDropdown) return;
+            languageBtn.addEventListener('click', () => {
+                languageDropdown.style.display = languageDropdown.style.display === 'block' ? 'none' : 'block';
+            });
+            languageDropdown.addEventListener('click', (e) => {
+                const option = e.target.closest('.language-option');
+                if (option) {
+                    const lang = option.dataset.lang;
+                    localStorage.setItem('preferredLanguage', lang);
+                    updateContentLanguage(lang);
+                    languageDropdown.style.display = 'none';
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            initAuthModal();
+            initLanguageSelector();
+            updateAuthButtons();
+            const savedLanguage = localStorage.getItem('preferredLanguage') || 'en';
+            updateContentLanguage(savedLanguage);
+        });
+    </script>
+</body>
+</html>

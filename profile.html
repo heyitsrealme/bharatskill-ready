@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-translate="profile.title">Your Profile</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Kalam:wght@400;700&display=stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-hands-helping"></i>
+                    <h3 data-translate="header.title">BharatSkill Connect</h3>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="index.html" class="nav-home" data-translate="nav.home">Home</a></li>
+                        <li><a href="browse.html" class="nav-browse" data-translate="nav.browse">Browse Skills</a></li>
+                        
+                        <li><a href="about.html" class="nav-about" data-translate="nav.about">About Us</a></li>
+                        <li><a href="profile.html" class="nav-profile active" data-translate="nav.profile">Profile</a></li>
+                    </ul>
+                </nav>
+                <div class="auth-buttons">
+                    <button class="btn btn-outline" id="loginBtn" data-translate="auth.login">Login</button>
+                    <button class="btn btn-primary" id="signupBtn" data-translate="auth.signup">Sign Up</button>
+                    <button class="btn btn-outline" id="logoutBtn" style="display: none;" data-translate="auth.logout">Logout</button>
+                    <button class="btn btn-primary" id="listSkillBtn" style="display: none;" data-translate="auth.listSkill">List Your Skill</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="search-language-container">
+        <div class="search-container">
+            <select class="search-filter" id="searchFilter">
+                <option value="skill" data-translate="search.filter.skill">By Skill</option>
+                <option value="location" data-translate="search.filter.location">By Location</option>
+                <option value="timing" data-translate="search.filter.timing">By Timing</option>
+                <option value="preference" data-translate="search.filter.preference">By Preference</option>
+            </select>
+            <input type="text" class="search-input" id="searchInput" data-translate-placeholder="search.placeholder" placeholder="Search for skills, gurus, or workshops...">
+            <button class="search-button"><i class="fas fa-search"></i> <span data-translate="search.button">Search</span></button>
+        </div>
+        <div class="language-selector">
+            <div class="language-btn" id="languageBtn">
+                <i class="fas fa-globe"></i>
+                <span id="currentLanguage">English</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="language-dropdown" id="languageDropdown">
+                <div class="language-option active" data-lang="en"><span>English</span></div>
+                <div class="language-option" data-lang="hi"><span>हिन्दी (Hindi)</span></div>
+                <div class="language-option" data-lang="gu"><span>ગુજરાતી (Gujarati)</span></div>
+                <div class="language-option" data-lang="bn"><span>বাংলা (Bengali)</span></div>
+                <div class="language-option" data-lang="ta"><span>தமிழ் (Tamil)</span></div>
+                <div class="language-option" data-lang="te"><span>తెలుగు (Telugu)</span></div>
+                <div class="language-option" data-lang="mr"><span>मराठी (Marathi)</span></div>
+                <div class="language-option" data-lang="kn"><span>ಕನ್ನಡ (Kannada)</span></div>
+                <div class="language-option" data-lang="ml"><span>മലയാളം (Malayalam)</span></div>
+                <div class="language-option" data-lang="pa"><span>ਪੰਜਾਬੀ (Punjabi)</span></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-content container">
+        <section class="profile-section" id="profileSection">
+            <div class="section-title">
+                <h2 data-translate="profile.title">Your Profile</h2>
+                <p data-translate="profile.subtitle">Manage your personal information and skills</p>
+            </div>
+            <div id="profileContent"></div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3 data-translate="footer.title">BharatSkill Connect</h3>
+                    <p data-translate="footer.description">Empowering communities through skill exchange and learning.</p>
+                </div>
+                <div class="footer-column">
+                    <h3 data-translate="footer.links.title">Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html" class="nav-home" data-translate="nav.home">Home</a></li>
+                        <li><a href="browse.html" class="nav-browse" data-translate="nav.browse">Browse Skills</a></li>
+                        <li><a href="dashboard.html" class="nav-dashboard" data-translate="nav.dashboard">Dashboard</a></li>
+                        <li><a href="about.html" class="nav-about" data-translate="nav.about">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3 data-translate="footer.legal.title">Legal</h3>
+                    <ul>
+                        <li><a href="#" data-translate="footer.legal.privacy">Privacy Policy</a></li>
+                        <li><a href="#" data-translate="footer.legal.terms">Terms of Service</a></li>
+                        <li><a href="#" data-translate="footer.legal.safety">Safety Guidelines</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3 data-translate="footer.follow.title">Follow Us</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright" data-translate="footer.copyright">&copy; 2025 BharatSkill Connect. All rights reserved.</div>
+        </div>
+    </footer>
+
+    <div class="modal" id="authModal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeAuthModal">&times;</span>
+            <h2 class="modal-title" id="authTitle" data-translate="auth.login.title">Login</h2>
+            <form id="authForm">
+                <div class="form-group">
+                    <label for="email" data-translate="auth.email.label">Email</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password" data-translate="auth.password.label">Password</label>
+                    <input type="password" id="password" required>
+                </div>
+                <button type="submit" class="btn btn-primary" id="authSubmit" style="width: 100%;" data-translate="auth.login.button">Login</button>
+            </form>
+            <p style="margin-top: 15px; text-align: center;" data-translate="auth.switch.text">
+                Don't have an account? <a href="#" id="switchToSignup" data-translate="auth.switch.signup">Signup here</a>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        const translations = {
+            'en': {
+                'header.title': 'BharatSkill Connect',
+                'nav.home': 'Home',
+                'nav.browse': 'Browse Skills',
+                'nav.dashboard': 'Dashboard',
+                'nav.about': 'About Us',
+                'nav.profile': 'Profile',
+                'auth.login': 'Login',
+                'auth.signup': 'Sign Up',
+                'auth.logout': 'Logout',
+                'auth.listSkill': 'List Your Skill',
+                'auth.login.title': 'Login',
+                'auth.signup.title': 'Sign Up',
+                'auth.login.button': 'Login',
+                'auth.signup.button': 'Sign Up',
+                'auth.email.label': 'Email',
+                'auth.password.label': 'Password',
+                'auth.switch.text': "Don't have an account?",
+                'auth.switch.signup': 'Signup here',
+                'auth.switch.login': 'Login here',
+                'search.placeholder': 'Search for skills, gurus, or workshops...',
+                'search.button': 'Search',
+                'search.filter.skill': 'By Skill',
+                'search.filter.location': 'By Location',
+                'search.filter.timing': 'By Timing',
+                'search.filter.preference': 'By Preference',
+                'profile.title': 'Your Profile',
+                'profile.subtitle': 'Manage your personal information and skills',
+                'profile.notLoggedIn': 'Please log in first to view your profile.',
+                'profile.welcome': 'Welcome, ',
+                'profile.edit': 'Edit Profile',
+                'profile.listSkill': 'List New Skill',
+                'profile.skills.title': 'Your Skills',
+                'profile.reviews.title': 'Your Reviews',
+                'footer.title': 'BharatSkill Connect',
+                'footer.description': 'Empowering communities through skill exchange and learning.',
+                'footer.links.title': 'Quick Links',
+                'footer.legal.title': 'Legal',
+                'footer.legal.privacy': 'Privacy Policy',
+                'footer.legal.terms': 'Terms of Service',
+                'footer.legal.safety': 'Safety Guidelines',
+                'footer.follow.title': 'Follow Us',
+                'footer.copyright': '© 2025 BharatSkill Connect. All rights reserved.'
+            },
+            'hi': {
+                'header.title': 'भारतस्किल कनेक्ट',
+                'nav.home': 'होम',
+                'nav.browse': 'कौशल ब्राउज़ करें',
+                'nav.dashboard': 'डैशबोर्ड',
+                'nav.about': 'हमारे बारे में',
+                'nav.profile': 'प्रोफ़ाइल',
+                'auth.login': 'लॉगिन',
+                'auth.signup': 'साइन अप',
+                'auth.logout': 'लॉगआउट',
+                'auth.listSkill': 'अपना कौशल सूचीबद्ध करें',
+                'auth.login.title': 'लॉगिन',
+                'auth.signup.title': 'साइन अप',
+                'auth.login.button': 'लॉगिन',
+                'auth.signup.button': 'साइन अप',
+                'auth.email.label': 'ईमेल',
+                'auth.password.label': 'पासवर्ड',
+                'auth.switch.text': 'खाता नहीं है?',
+                'auth.switch.signup': 'यहां साइन अप करें',
+                'auth.switch.login': 'यहां लॉगिन करें',
+                'search.placeholder': 'कौशल, गुरु, या कार्यशालाएं खोजें...',
+                'search.button': 'खोज',
+                'search.filter.skill': 'कौशल द्वारा',
+                'search.filter.location': 'स्थान द्वारा',
+                'search.filter.timing': 'समय द्वारा',
+                'search.filter.preference': 'प्राथमिकता द्वारा',
+                'profile.title': 'आपकी प्रोफ़ाइल',
+                'profile.subtitle': 'अपनी व्यक्तिगत जानकारी और कौशल प्रबंधित करें',
+                'profile.notLoggedIn': 'कृपया पहले लॉगिन करें अपनी प्रोफ़ाइल देखने के लिए।',
+                'profile.welcome': 'स्वागत है, ',
+                'profile.edit': 'प्रोफ़ाइल संपादित करें',
+                'profile.listSkill': 'नया कौशल सूचीबद्ध करें',
+                'profile.skills.title': 'आपके कौशल',
+                'profile.reviews.title': 'आपकी समीक्षाएँ',
+                'footer.title': 'भारतस्किल कनेक्ट',
+                'footer.description': 'कौशल विनिमय और सीखने के माध्यम से समुदायों को सशक्त बनाना।',
+                'footer.links.title': 'त्वरित लिंक',
+                'footer.legal.title': 'कानूनी',
+                'footer.legal.privacy': 'गोपनीयता नीति',
+                'footer.legal.terms': 'सेवा की शर्तें',
+                'footer.legal.safety': 'सुरक्षा दिशानिर्देश',
+                'footer.follow.title': 'हमें फॉलो करें',
+                'footer.copyright': '© 2025 भारतस्किल कनेक्ट। सभी अधिकार सुरक्षित।'
+            },
+            'gu': {
+                'header.title': 'ભારતસ્કિલ કનેક્ટ',
+                'nav.home': 'હોમ',
+                'nav.browse': 'કૌશલ્યો બ્રાઉઝ કરો',
+                'nav.dashboard': 'ડેશબોર્ડ',
+                'nav.about': 'અમારા વિશે',
+                'nav.profile': 'પ્રોફાઇલ',
+                'auth.login': 'લૉગિન',
+                'auth.signup': 'સાઇન અપ',
+                'auth.logout': 'લૉગઆઉટ',
+                'auth.listSkill': 'તમારું કૌશલ્ય સૂચિબદ્ધ કરો',
+                'auth.login.title': 'લૉગિન',
+                'auth.signup.title': 'સાઇન અપ',
+                'auth.login.button': 'લૉગિન',
+                'auth.signup.button': 'સાઇન અપ',
+                'auth.email.label': 'ઈમેલ',
+                'auth.password.label': 'પાસવર્ડ',
+                'auth.switch.text': 'ખાતું નથી?',
+                'auth.switch.signup': 'અહીં સાઇન અપ કરો',
+                'auth.switch.login': 'અહીં લૉગિન કરો',
+                'search.placeholder': 'કૌશલ્યો, ગુરુઓ, અથવા વર્કશોપ્સ શોધો...',
+                'search.button': 'શોધો',
+                'search.filter.skill': 'કૌશલ્ય દ્વારા',
+                'search.filter.location': 'સ્થાન દ્વારા',
+                'search.filter.timing': 'સમય દ્વારા',
+                'search.filter.preference': 'પ્રાથમિકતા દ્વારા',
+                'profile.title': 'તમારી પ્રોફાઇલ',
+                'profile.subtitle': 'તમારી વ્યક્તિગત માહિતી અને કૌશલ્યોનું સંચાલન કરો',
+                'profile.notLoggedIn': 'કૃપા કરીને પહેલા લૉગિન કરો તમારી પ્રોફાઇલ જોવા માટે.',
+                'profile.welcome': 'સ્વાગત છે, ',
+                'profile.edit': 'પ્રોફાઇલ સંપાદિત કરો',
+                'profile.listSkill': 'નવું કૌશલ્ય સૂચિબદ્ધ કરો',
+                'profile.skills.title': 'તમારા કૌશલ્યો',
+                'profile.reviews.title': 'તમારી સમીક્ષાઓ',
+                'footer.title': 'ભારતસ્કિલ કનેક્ટ',
+                'footer.description': 'કૌશલ્ય વિનિમય અને શીખવા દ્વારા સમુદાયોને સશક્ત બનાવવું.',
+                'footer.links.title': 'ઝડપી લિંક્સ',
+                'footer.legal.title': 'કાયદેસર',
+                'footer.legal.privacy': 'ગોપનીયતા નીતિ',
+                'footer.legal.terms': 'સેવાની શરતો',
+                'footer.legal.safety': 'સલામતી માર્ગદર્શિકા',
+                'footer.follow.title': 'અમને અનુસરો',
+                'footer.copyright': '© 2025 ભારતસ્કિલ કનેક્ટ. બધા હક્કો અનામત.'
+            }
+        };
+
+        function updateContentLanguage(lang) {
+            document.querySelectorAll('[data-translate]').forEach(element => {
+                const key = element.getAttribute('data-translate');
+                if (translations[lang] && translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+            document.querySelectorAll('[data-translate-placeholder]').forEach(element => {
+                const key = element.getAttribute('data-translate-placeholder');
+                if (translations[lang] && translations[lang][key]) {
+                    element.placeholder = translations[lang][key];
+                }
+            });
+            const currentLanguage = document.getElementById('currentLanguage');
+            if (currentLanguage) {
+                currentLanguage.textContent = lang === 'en' ? 'English' : lang === 'hi' ? 'हिन्दी (Hindi)' : 'ગુજરાતી (Gujarati)';
+            }
+            const languageDropdown = document.getElementById('languageDropdown');
+            if (languageDropdown) {
+                languageDropdown.querySelectorAll('.language-option').forEach(option => {
+                    option.classList.toggle('active', option.dataset.lang === lang);
+                });
+            }
+            updateProfileContent(lang);
+        }
+
+        function updateAuthButtons() {
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            const loginBtn = document.getElementById('loginBtn');
+            const signupBtn = document.getElementById('signupBtn');
+            const logoutBtn = document.getElementById('logoutBtn');
+            const listSkillBtn = document.getElementById('listSkillBtn');
+            if (loginBtn) loginBtn.style.display = isLoggedIn ? 'none' : 'inline-block';
+            if (signupBtn) signupBtn.style.display = isLoggedIn ? 'none' : 'inline-block';
+            if (logoutBtn) logoutBtn.style.display = isLoggedIn ? 'inline-block' : 'none';
+            if (listSkillBtn) listSkillBtn.style.display = isLoggedIn ? 'inline-block' : 'none';
+            updateProfileContent(localStorage.getItem('preferredLanguage') || 'en');
+        }
+
+        function initAuthModal() {
+            const authModal = document.getElementById('authModal');
+            const closeAuthModal = document.getElementById('closeAuthModal');
+            const authForm = document.getElementById('authForm');
+            const authTitle = document.getElementById('authTitle');
+            const authSubmit = document.getElementById('authSubmit');
+            const switchToSignup = document.getElementById('switchToSignup');
+            const loginBtn = document.getElementById('loginBtn');
+            const signupBtn = document.getElementById('signupBtn');
+            const logoutBtn = document.getElementById('logoutBtn');
+
+            let isSignup = false;
+
+            loginBtn.addEventListener('click', () => {
+                authModal.style.display = 'flex';
+                authTitle.textContent = translations[localStorage.getItem('preferredLanguage') || 'en']['auth.login.title'];
+                authSubmit.textContent = translations[localStorage.getItem('preferredLanguage') || 'en']['auth.login.button'];
+                isSignup = false;
+            });
+
+            signupBtn.addEventListener('click', () => {
+                authModal.style.display = 'flex';
+                authTitle.textContent = translations[localStorage.getItem('preferredLanguage') || 'en']['auth.signup.title'];
+                authSubmit.textContent = translations[localStorage.getItem('preferredLanguage') || 'en']['auth.signup.button'];
+                isSignup = true;
+            });
+
+            closeAuthModal.addEventListener('click', () => {
+                authModal.style.display = 'none';
+                authForm.reset();
+            });
+
+            switchToSignup.addEventListener('click', (e) => {
+                e.preventDefault();
+                isSignup = !isSignup;
+                authTitle.textContent = translations[localStorage.getItem('preferredLanguage') || 'en'][isSignup ? 'auth.signup.title' : 'auth.login.title'];
+                authSubmit.textContent = translations[localStorage.getItem('preferredLanguage') || 'en'][isSignup ? 'auth.signup.button' : 'auth.login.button'];
+            });
+
+            authForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+                if (isSignup) {
+                    localStorage.setItem('userEmail', email);
+                    localStorage.setItem('isLoggedIn', 'true');
+                    alert('Sign up successful!');
+                } else {
+                    localStorage.setItem('userEmail', email);
+                    localStorage.setItem('isLoggedIn', 'true');
+                    alert('Login successful!');
+                }
+                authModal.style.display = 'none';
+                authForm.reset();
+                updateAuthButtons();
+            });
+
+            logoutBtn.addEventListener('click', () => {
+                localStorage.removeItem('isLoggedIn');
+                localStorage.removeItem('userEmail');
+                updateAuthButtons();
+                window.location.href = 'index.html';
+            });
+        }
+
+        function initLanguageSelector() {
+            const languageBtn = document.getElementById('languageBtn');
+            const languageDropdown = document.getElementById('languageDropdown');
+            if (!languageBtn || !languageDropdown) return;
+            languageBtn.addEventListener('click', () => {
+                languageDropdown.style.display = languageDropdown.style.display === 'block' ? 'none' : 'block';
+            });
+            languageDropdown.addEventListener('click', (e) => {
+                const option = e.target.closest('.language-option');
+                if (option) {
+                    const lang = option.dataset.lang;
+                    localStorage.setItem('preferredLanguage', lang);
+                    updateContentLanguage(lang);
+                    languageDropdown.style.display = 'none';
+                }
+            });
+        }
+
+        function updateProfileContent(lang) {
+            const profileContent = document.getElementById('profileContent');
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            const userEmail = localStorage.getItem('userEmail') || 'User';
+            if (!isLoggedIn) {
+                profileContent.innerHTML = `
+                    <div class="profile-message">
+                        <p data-translate="profile.notLoggedIn">${translations[lang]['profile.notLoggedIn']}</p>
+                        <button class="btn btn-primary" id="loginPromptBtn" data-translate="auth.login">${translations[lang]['auth.login']}</button>
+                    </div>
+                `;
+                const loginPromptBtn = document.getElementById('loginPromptBtn');
+                if (loginPromptBtn) {
+                    loginPromptBtn.addEventListener('click', () => {
+                        document.getElementById('authModal').style.display = 'flex';
+                        document.getElementById('authTitle').textContent = translations[lang]['auth.login.title'];
+                        document.getElementById('authSubmit').textContent = translations[lang]['auth.login.button'];
+                    });
+                }
+            } else {
+                profileContent.innerHTML = `
+                    <div class="profile-container">
+                        <div class="profile-header">
+                            <div class="profile-picture"></div>
+                            <div class="profile-details">
+                                <h2 data-translate="profile.welcome">${translations[lang]['profile.welcome']} ${userEmail}</h2>
+                                <p>${userEmail}</p>
+                                <p data-translate="profile.subtitle">${translations[lang]['profile.subtitle']}</p>
+                            </div>
+                        </div>
+                        <div class="profile-actions">
+                            <button class="btn btn-primary" data-translate="profile.edit">${translations[lang]['profile.edit']}</button>
+                            <button class="btn btn-primary" data-translate="profile.listSkill">${translations[lang]['profile.listSkill']}</button>
+                        </div>
+                        <div class="skills-list">
+                            <h3 data-translate="profile.skills.title">${translations[lang]['profile.skills.title']}</h3>
+                            <ul>
+                                <li>Sample Skill 1</li>
+                                <li>Sample Skill 2</li>
+                            </ul>
+                        </div>
+                        <div class="reviews-list">
+                            <h3 data-translate="profile.reviews.title">${translations[lang]['profile.reviews.title']}</h3>
+                            <div class="review-card">
+                                <p>Great teacher! Very patient and knowledgeable.</p>
+                                <p class="reviewer">Anonymous</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            initAuthModal();
+            initLanguageSelector();
+            updateAuthButtons();
+            const savedLanguage = localStorage.getItem('preferredLanguage') || 'en';
+            updateContentLanguage(savedLanguage);
+        });
+    </script>
+</body>
+</html>

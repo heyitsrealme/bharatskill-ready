@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-translate="skills.title">Browse Skills</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Kalam:wght@400;700&display=stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .chat-modal { max-width: 500px; width: 90%; }
+        .chat-window { max-height: 400px; overflow-y: auto; padding: 15px; background: #f9f9f9; border-radius: 8px; }
+        .message-bubble { margin: 10px 0; padding: 10px 15px; border-radius: 15px; max-width: 70%; word-wrap: break-word; }
+        .message-bubble.user { background: #4a6bdf; color: white; margin-left: auto; text-align: right; }
+        .message-bubble.guru { background: #e0e0e0; color: #333; margin-right: auto; }
+        .message-bubble small { display: block; font-size: 0.8em; margin-top: 5px; opacity: 0.7; }
+        .message-input-container { display: flex; margin-top: 10px; }
+        .message-input { flex-grow: 1; padding: 10px; border: 1px solid #ccc; border-radius: 5px; }
+        .send-message-btn { margin-left: 10px; padding: 10px; background: #4a6bdf; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        .send-message-btn:hover { background: #3a5ac8; }
+        .typing-indicator { font-style: italic; color: #666; margin: 10px 0; }
+        .unread-badge { background: #e74c3c; color: white; border-radius: 50%; padding: 2px 6px; font-size: 0.8em; margin-left: 5px; }
+        .listing-actions { display: flex; flex-direction: column; gap: 10px; align-items: flex-start; }
+        .btn-book, .btn-chat { width: 100%; text-align: center; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-hands-helping"></i>
+                    <h3 data-translate="header.title">BharatSkill Connect</h3>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="index.html" class="nav-home" data-translate="nav.home">Home</a></li>
+                        <li><a href="browse.html" class="nav-browse active" data-translate="nav.browse">Browse Skills</a></li>
+                    
+                        <li><a href="about.html" class="nav-about" data-translate="nav.about">About Us</a></li>
+                        <li><a href="profile.html" class="nav-profile" data-translate="nav.profile">Profile</a></li>
+                    </ul>
+                </nav>
+                <div class="auth-buttons">
+                    <button class="btn btn-outline" id="loginBtn" data-translate="auth.login">Login</button>
+                    <button class="btn btn-primary" id="signupBtn" data-translate="auth.signup">Sign Up</button>
+                    <button class="btn btn-outline" id="logoutBtn" style="display: none;" data-translate="auth.logout">Logout</button>
+                    <button class="btn btn-primary" id="listSkillBtn" style="display: none;" data-translate="auth.listSkill">List Your Skill</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="search-language-container">
+        <div class="search-container">
+            <select class="search-filter" id="searchFilter">
+                <option value="skill" data-translate="search.filter.skill">By Skill</option>
+                <option value="location" data-translate="search.filter.location">By Location</option>
+                <option value="timing" data-translate="search.filter.timing">By Timing</option>
+                <option value="preference" data-translate="search.filter.preference">By Preference</option>
+            </select>
+            <input type="text" class="search-input" id="searchInput" data-translate-placeholder="search.placeholder" placeholder="Search here...">
+            <button class="search-button"><i class="fas fa-search"></i> <span data-translate="search.button">Search</span></button>
+        </div>
+        <div class="language-selector">
+            <div class="language-btn" id="languageBtn">
+                <i class="fas fa-globe"></i>
+                <span id="currentLanguage">English</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="language-dropdown" id="languageDropdown">
+                <div class="language-option active" data-lang="en"><span>English</span></div>
+                <div class="language-option" data-lang="hi"><span>हिन्दी (Hindi)</span></div>
+                <div class="language-option" data-lang="gu"><span>ગુજરાતી (Gujarati)</span></div>
+                <div class="language-option" data-lang="bn"><span>বাংলা (Bengali)</span></div>
+                <div class="language-option" data-lang="ta"><span>தமிழ் (Tamil)</span></div>
+                <div class="language-option" data-lang="te"><span>తెలుగు (Telugu)</span></div>
+                <div class="language-option" data-lang="mr"><span>मराठी (Marathi)</span></div>
+                <div class="language-option" data-lang="kn"><span>ಕನ್ನಡ (Kannada)</span></div>
+                <div class="language-option" data-lang="ml"><span>മലയാളം (Malayalam)</span></div>
+                <div class="language-option" data-lang="pa"><span>ਪੰਜਾਬੀ (Punjabi)</span></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-content container">
+        <section class="skill-listings">
+            <div class="section-title">
+                <h2 data-translate="skills.title">Featured Skills</h2>
+                <p data-translate="skills.subtitle">Discover skills available in your local community</p>
+            </div>
+            <div class="filters" id="categoryBar"></div>
+            <div class="listings-grid" id="skillsContainer"></div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3 data-translate="footer.title">BharatSkill Connect</h3>
+                    <p data-translate="footer.description">Empowering communities through skill exchange and learning.</p>
+                </div>
+                <div class="footer-column">
+                    <h3 data-translate="footer.links.title">Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html" class="nav-home" data-translate="nav.home">Home</a></li>
+                        <li><a href="browse.html" class="nav-browse" data-translate="nav.browse">Browse Skills</a></li>
+                        <li><a href="dashboard.html" class="nav-dashboard" data-translate="nav.dashboard">Dashboard</a></li>
+                        <li><a href="about.html" class="nav-about" data-translate="nav.about">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3 data-translate="footer.legal.title">Legal</h3>
+                    <ul>
+                        <li><a href="#" data-translate="footer.legal.privacy">Privacy Policy</a></li>
+                        <li><a href="#" data-translate="footer.legal.terms">Terms of Service</a></li>
+                        <li><a href="#" data-translate="footer.legal.safety">Safety Guidelines</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3 data-translate="footer.follow.title">Follow Us</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright" data-translate="footer.copyright">&copy; 2025 BharatSkill Connect. All rights reserved.</div>
+        </div>
+    </footer>
+
+    <div class="modal" id="authModal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeAuthModal">&times;</span>
+            <h2 class="modal-title" id="authTitle" data-translate="auth.login.title">Login</h2>
+            <p id="authMessage" style="display: none; color: #e74c3c; text-align: center;"></p>
+            <form id="authForm">
+                <div class="form-group">
+                    <label for="email" data-translate="auth.email.label">Email</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password" data-translate="auth.password.label">Password</label>
+                    <input type="password" id="password" required>
+                </div>
+                <button type="submit" class="btn btn-primary" id="authSubmit" style="width: 100%;" data-translate="auth.login.button">Login</button>
+            </form>
+            <p style="margin-top: 15px; text-align: center;" data-translate="auth.switch.text">
+                Don't have an account? <a href="#" id="switchToSignup" data-translate="auth.switch.signup">Signup here</a>
+            </p>
+        </div>
+    </div>
+
+    <div class="modal chat-modal" id="chatModal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeChatModal">&times;</span>
+            <h2 class="modal-title" id="chatTitle">Chat with Guru</h2>
+            <div class="chat-window" id="chatWindow"></div>
+            <div class="typing-indicator" id="typingIndicator" style="display: none;">Guru is typing...</div>
+            <div class="message-input-container">
+                <input type="text" class="message-input" id="messageInput" placeholder="Type a message..." aria-label="Type a message">
+                <button class="send-message-btn" id="sendMessageBtn"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const translations = {
+            'en': {
+                'header.title': 'BharatSkill Connect',
+                'nav.home': 'Home',
+                'nav.browse': 'Browse Skills',
+                'nav.messages': 'Messages',
+                'nav.dashboard': 'Dashboard',
+                'nav.about': 'About Us',
+                'nav.profile': 'Profile',
+                'auth.login': 'Login',
+                'auth.signup': 'Sign Up',
+                'auth.logout': 'Logout',
+                'auth.listSkill': 'List Your Skill',
+                'auth.login.title': 'Login',
+                'auth.signup.title': 'Sign Up',
+                'auth.login.button': 'Login',
+                'auth.signup.button': 'Sign Up',
+                'auth.email.label': 'Email',
+                'auth.password.label': 'Password',
+                'auth.switch.text': "Don't have an account?",
+                'auth.switch.signup': 'Signup here',
+                'auth.switch.login': 'Login here',
+                'auth.chatNotLoggedIn': 'Please log in to chat with a Guru.',
+                'auth.bookNotLoggedIn': 'Please log in to book a session.',
+                'search.placeholder': 'Search here...',
+                'search.button': 'Search',
+                'search.filter.skill': 'By Skill',
+                'search.filter.location': 'By Location',
+                'search.filter.timing': 'By Timing',
+                'search.filter.preference': 'By Preference',
+                'skills.title': 'Featured Skills',
+                'skills.subtitle': 'Discover skills available in your local community',
+                'skills.filters.coding': 'Coding',
+                'skills.filters.cooking': 'Cooking',
+                'skills.filters.language': 'Language',
+                'skills.filters.art': 'Art',
+                'skills.book': 'Book Now',
+                'skills.chat': 'Chat with Guru',
+                'footer.title': 'BharatSkill Connect',
+                'footer.description': 'Empowering communities through skill exchange and learning.',
+                'footer.links.title': 'Quick Links',
+                'footer.legal.title': 'Legal',
+                'footer.legal.privacy': 'Privacy Policy',
+                'footer.legal.terms': 'Terms of Service',
+                'footer.legal.safety': 'Safety Guidelines',
+                'footer.follow.title': 'Follow Us',
+                'footer.copyright': '© 2025 BharatSkill Connect. All rights reserved.'
+            },
+            'hi': {
+                'header.title': 'भारतस्किल कनेक्ट',
+                'nav.home': 'होम',
+                'nav.browse': 'कौशल ब्राउज़ करें',
+                'nav.messages': 'संदेश',
+                'nav.dashboard': 'डैशबोर्ड',
+                'nav.about': 'हमारे बारे में',
+                'nav.profile': 'प्रोफ़ाइल',
+                'auth.login': 'लॉगिन',
+                'auth.signup': 'साइन अप',
+                'auth.logout': 'लॉगआउट',
+                'auth.listSkill': 'अपना कौशल सूचीबद्ध करें',
+                'auth.login.title': 'लॉगिन',
+                'auth.signup.title': 'साइन अप',
+                'auth.login.button': 'लॉगिन',
+                'auth.signup.button': 'साइन अप',
+                'auth.email.label': 'ईमेल',
+                'auth.password.label': 'पासवर्ड',
+                'auth.switch.text': 'खाता नहीं है?',
+                'auth.switch.signup': 'यहां साइन अप करें',
+                'auth.switch.login': 'यहां लॉगिन करें',
+                'auth.chatNotLoggedIn': 'कृपया गुरु के साथ चैट करने के लिए पहले लॉगिन करें।',
+                'auth.bookNotLoggedIn': 'कृपया सत्र बुक करने के लिए पहले लॉगिन करें।',
+                'search.placeholder': 'कौशल, गुरु, या कार्यशालाएं खोजें...',
+                'search.button': 'खोज',
+                'search.filter.skill': 'कौशल द्वारा',
+                'search.filter.location': 'स्थान द्वारा',
+                'search.filter.timing': 'समय द्वारा',
+                'search.filter.preference': 'प्राथमिकता द्वारा',
+                'skills.title': 'विशेष रुप से प्रदर्शित कौशल',
+                'skills.subtitle': 'अपने स्थानीय समुदाय में उपलब्ध कौशल खोजें',
+                'skills.filters.coding': 'कोडिंग',
+                'skills.filters.cooking': 'खाना बनाना',
+                'skills.filters.language': 'भाषा',
+                'skills.filters.art': 'कला',
+                'skills.book': 'अभी बुक करें',
+                'skills.chat': 'गुरु के साथ चैट करें',
+                'footer.title': 'भारतस्किल कनेक्ट',
+                'footer.description': 'कौशल विनिमय और सीखने के माध्यम से समुदायों को सशक्त बनाना।',
+                'footer.links.title': 'त्वरित लिंक',
+                'footer.legal.title': 'कानूनी',
+                'footer.legal.privacy': 'गोपनीयता नीति',
+                'footer.legal.terms': 'सेवा की शर्तें',
+                'footer.legal.safety': 'सुरक्षा दिशानिर्देश',
+                'footer.follow.title': 'हमें फॉलो करें',
+                'footer.copyright': '© 2025 भारतस्किल कनेक्ट। सभी अधिकार सुरक्षित।'
+            },
+            'gu': {
+                'header.title': 'ભારતસ્કિલ કનેક્ટ',
+                'nav.home': 'હોમ',
+                'nav.browse': 'કૌશલ્યો બ્રાઉઝ કરો',
+                'nav.messages': 'સંદેશા',
+                'nav.dashboard': 'ડેશબોર્ડ',
+                'nav.about': 'અમારા વિશે',
+                'nav.profile': 'પ્રોફાઇલ',
+                'auth.login': 'લૉગિન',
+                'auth.signup': 'સાઇન અપ',
+                'auth.logout': 'લૉગઆઉટ',
+                'auth.listSkill': 'તમારું કૌશલ્ય સૂચિબદ્ધ કરો',
+                'auth.login.title': 'લૉગિન',
+                'auth.signup.title': 'સાઇન અપ',
+                'auth.login.button': 'લૉગિન',
+                'auth.signup.button': 'સાઇન અપ',
+                'auth.email.label': 'ઈમેલ',
+                'auth.password.label': 'પાસવર્ડ',
+                'auth.switch.text': 'ખાતું નથી?',
+                'auth.switch.signup': 'અહીં સાઇન અપ કરો',
+                'auth.switch.login': 'અહીં લૉગિન કરો',
+                'auth.chatNotLoggedIn': 'કૃપા કરીને ગુરુ સાથે ચેટ કરવા માટે પહેલા લૉગિન કરો.',
+                'auth.bookNotLoggedIn': 'કૃપા કરીને સત્ર બુક કરવા માટે પહેલા લૉગિન કરો.',
+                'search.placeholder': 'કૌશલ્યો, ગુરુઓ, અથવા વર્કશોપ્સ શોધો...',
+                'search.button': 'શોધો',
+                'search.filter.skill': 'કૌશલ્ય દ્વારા',
+                'search.filter.location': 'સ્થાન દ્વારા',
+                'search.filter.timing': 'સમય દ્વારા',
+                'search.filter.preference': 'પ્રાથમિકતા દ્વારા',
+                'skills.title': 'ફીચર્ડ કૌશલ્યો',
+                'skills.subtitle': 'તમારા સ્થાનિક સમુદાયમાં ઉપલબ્ધ કૌશલ્યો શોધો',
+                'skills.filters.coding': 'કોડિંગ',
+                'skills.filters.cooking': 'રસોઈ',
+                'skills.filters.language': 'ભાષા',
+                'skills.filters.art': 'કળા',
+                'skills.book': 'હવે બુક કરો',
+                'skills.chat': 'ગુરુ સાથે ચેટ કરો',
+                'footer.title': 'ભારતસ્કિલ કનેક્ટ',
+                'footer.description': 'કૌશલ્ય વિનિમય અને શીખવા દ્વારા સમુદાયોને સશક્ત બનાવવું.',
+                'footer.links.title': 'ઝડપી લિંક્સ',
+                'footer.legal.title': 'કાયદેસર',
+                'footer.legal.privacy': 'ગોપનીયતા નીતિ',
+                'footer.legal.terms': 'સેવાની શરતો',
+                'footer.legal.safety': 'સલામતી માર્ગદર્શિકા',
+                'footer.follow.title': 'અમને અનુસરો',
+                'footer.copyright': '© 2025 ભારતસ્કિલ કનેક્ટ. બધા હક્કો અનામત.'
+            }
+        };
+
+        function updateContentLanguage(lang) {
+            try {
+                document.querySelectorAll('[data-translate]').forEach(element => {
+                    const key = element.getAttribute('data-translate');
+                    if (translations[lang] && translations[lang][key]) {
+                        element.textContent = translations[lang][key];
+                    } else {
+                        console.warn(`Translation missing for key: ${key} in language: ${lang}`);
+                    }
+                });
+                document.querySelectorAll('[data-translate-placeholder]').forEach(element => {
+                    const key = element.getAttribute('data-translate-placeholder');
+                    if (translations[lang] && translations[lang][key]) {
+                        element.placeholder = translations[lang][key];
+                    } else {
+                        console.warn(`Placeholder translation missing for key: ${key} in language: ${lang}`);
+                    }
+                });
+                const currentLanguage = document.getElementById('currentLanguage');
+                if (currentLanguage) {
+                    currentLanguage.textContent = lang === 'en' ? 'English' : lang === 'hi' ? 'हिन्दी (Hindi)' : 'ગુજરાતી (Gujarati)';
+                } else {
+                    console.error('Element with ID currentLanguage not found');
+                }
+                const languageDropdown = document.getElementById('languageDropdown');
+                if (languageDropdown) {
+                    languageDropdown.querySelectorAll('.language-option').forEach(option => {
+                        option.classList.toggle('active', option.dataset.lang === lang);
+                    });
+                } else {
+                    console.error('Element with ID languageDropdown not found');
+                }
+                updateSkillsContent(lang);
+                updateUnreadBadge();
+            } catch (error) {
+                console.error('Error in updateContentLanguage:', error);
+            }
+        }
+
+        function updateAuthButtons() {
+            try {
+                const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+                const loginBtn = document.getElementById('loginBtn');
+                const signupBtn = document.getElementById('signupBtn');
+                const logoutBtn = document.getElementById('logoutBtn');
+                const listSkillBtn = document.getElementById('listSkillBtn');
+                if (loginBtn) loginBtn.style.display = isLoggedIn ? 'none' : 'inline-block';
+                else console.error('Element with ID loginBtn not found');
+                if (signupBtn) signupBtn.style.display = isLoggedIn ? 'none' : 'inline-block';
+                else console.error('Element with ID signupBtn not found');
+                if (logoutBtn) logoutBtn.style.display = isLoggedIn ? 'inline-block' : 'none';
+                else console.error('Element with ID logoutBtn not found');
+                if (listSkillBtn) listSkillBtn.style.display = isLoggedIn ? 'inline-block' : 'none';
+                else console.error('Element with ID listSkillBtn not found');
+            } catch (error) {
+                console.error('Error in updateAuthButtons:', error);
+            }
+        }
+
+        function initAuthModal() {
+            try {
+                const authModal = document.getElementById('authModal');
+                const closeAuthModal = document.getElementById('closeAuthModal');
+                const authForm = document.getElementById('authForm');
+                const authTitle = document.getElementById('authTitle');
+                const authSubmit = document.getElementById('authSubmit');
+                const authMessage = document.getElementById('authMessage');
+                const switchToSignup = document.getElementById('switchToSignup');
+                const loginBtn = document.getElementById('loginBtn');
+                const signupBtn = document.getElementById('signupBtn');
+                const logoutBtn = document.getElementById('logoutBtn');
+
+                if (!authModal || !closeAuthModal || !authForm || !authTitle || !authSubmit || !authMessage || !switchToSignup || !loginBtn || !signupBtn || !logoutBtn) {
+                    console.error('One or more auth modal elements not found');
+                    return;
+                }
+
+                let isSignup = false;
+
+                loginBtn.addEventListener('click', () => {
+                    authModal.style.display = 'flex';
+                    authTitle.textContent = translations[localStorage.getItem('preferredLanguage') || 'en']['auth.login.title'];
+                    authSubmit.textContent = translations[localStorage.getItem('preferredLanguage') || 'en']['auth.login.button'];
+                    authMessage.style.display = 'none';
+                    isSignup = false;
+                });
+
+                signupBtn.addEventListener('click', () => {
+                    authModal.style.display = 'flex';
+                    authTitle.textContent = translations[localStorage.getItem('preferredLanguage') || 'en']['auth.signup.title'];
+                    authSubmit.textContent = translations[localStorage.getItem('preferredLanguage') || 'en']['auth.signup.button'];
+                    authMessage.style.display = 'none';
+                    isSignup = true;
+                });
+
+                closeAuthModal.addEventListener('click', () => {
+                    authModal.style.display = 'none';
+                    authForm.reset();
+                    authMessage.style.display = 'none';
+                });
+
+                switchToSignup.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    isSignup = !isSignup;
+                    authTitle.textContent = translations[localStorage.getItem('preferredLanguage') || 'en'][isSignup ? 'auth.signup.title' : 'auth.login.title'];
+                    authSubmit.textContent = translations[localStorage.getItem('preferredLanguage') || 'en'][isSignup ? 'auth.signup.button' : 'auth.login.button'];
+                    authMessage.style.display = 'none';
+                });
+
+                authForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const email = document.getElementById('email').value;
+                    const password = document.getElementById('password').value;
+                    if (isSignup) {
+                        localStorage.setItem('userEmail', email);
+                        localStorage.setItem('isLoggedIn', 'true');
+                        alert('Sign up successful!');
+                    } else {
+                        localStorage.setItem('userEmail', email);
+                        localStorage.setItem('isLoggedIn', 'true');
+                        alert('Login successful!');
+                    }
+                    authModal.style.display = 'none';
+                    authForm.reset();
+                    authMessage.style.display = 'none';
+                    updateAuthButtons();
+                });
+
+                logoutBtn.addEventListener('click', () => {
+                    localStorage.removeItem('isLoggedIn');
+                    localStorage.removeItem('userEmail');
+                    updateAuthButtons();
+                    window.location.href = 'index.html';
+                });
+            } catch (error) {
+                console.error('Error in initAuthModal:', error);
+            }
+        }
+
+        function initLanguageSelector() {
+            try {
+                const languageBtn = document.getElementById('languageBtn');
+                const languageDropdown = document.getElementById('languageDropdown');
+                if (!languageBtn || !languageDropdown) {
+                    console.error('Language selector elements not found');
+                    return;
+                }
+                languageBtn.addEventListener('click', () => {
+                    languageDropdown.style.display = languageDropdown.style.display === 'block' ? 'none' : 'block';
+                });
+                languageDropdown.addEventListener('click', (e) => {
+                    const option = e.target.closest('.language-option');
+                    if (option) {
+                        const lang = option.dataset.lang;
+                        localStorage.setItem('preferredLanguage', lang);
+                        updateContentLanguage(lang);
+                        languageDropdown.style.display = 'none';
+                    }
+                });
+            } catch (error) {
+                console.error('Error in initLanguageSelector:', error);
+            }
+        }
+
+        function updateSkillsContent(lang) {
+            try {
+                const skillsData = [
+                    { title: 'Python Programming', guru: 'Rahul Sharma', rating: 4.5, category: 'coding', location: 'Mumbai', guruId: 'guru1' },
+                    { title: 'Indian Cooking', guru: 'Priya Patel', rating: 4.8, category: 'cooking', location: 'Delhi', guruId: 'guru2' },
+                    { title: 'Spanish Language', guru: 'Anjali Singh', rating: 4.2, category: 'language', location: 'Bangalore', guruId: 'guru3' },
+                    { title: 'Traditional Painting', guru: 'Vikram Rao', rating: 4.7, category: 'art', location: 'Jaipur', guruId: 'guru4' }
+                ];
+
+                const categories = ['coding', 'cooking', 'language', 'art'];
+                const categoryBar = document.getElementById('categoryBar');
+                const skillsContainer = document.getElementById('skillsContainer');
+
+                if (!categoryBar || !skillsContainer) {
+                    console.error('Category bar or skills container not found');
+                    return;
+                }
+
+                categoryBar.innerHTML = categories.map(category => `
+                    <button class="filter-btn" data-category="${category}" data-translate="skills.filters.${category}">
+                        ${translations[lang][`skills.filters.${category}`]}
+                    </button>
+                `).join('');
+
+                skillsContainer.innerHTML = skillsData.map(skill => `
+                    <div class="listing-card">
+                        <div class="listing-image"></div>
+                        <div class="listing-content">
+                            <h3>${skill.title}</h3>
+                            <p>Guru: ${skill.guru}</p>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <span>${skill.rating}/5</span>
+                            </div>
+                            <p>Location: ${skill.location}</p>
+                            <div class="listing-actions">
+                                <a href="#" class="btn-book" data-guru-id="${skill.guruId}" data-translate="skills.book">${translations[lang]['skills.book']}</a>
+                                <a href="#" class="btn-chat" data-guru-id="${skill.guruId}" data-guru-name="${skill.guru}" data-translate="skills.chat">${translations[lang]['skills.chat']}</a>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+
+                categoryBar.addEventListener('click', (e) => {
+                    const btn = e.target.closest('.filter-btn');
+                    if (!btn) return;
+                    const category = btn.dataset.category;
+                    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+
+                    const filteredSkills = category === 'all' ? skillsData : skillsData.filter(skill => skill.category === category);
+                    skillsContainer.innerHTML = filteredSkills.map(skill => `
+                        <div class="listing-card">
+                            <div class="listing-image"></div>
+                            <div class="listing-content">
+                                <h3>${skill.title}</h3>
+                                <p>Guru: ${skill.guru}</p>
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <span>${skill.rating}/5</span>
+                                </div>
+                                <p>Location: ${skill.location}</p>
+                                <div class="listing-actions">
+                                    <a href="#" class="btn-book" data-guru-id="${skill.guruId}" data-translate="skills.book">${translations[lang]['skills.book']}</a>
+                                    <a href="#" class="btn-chat" data-guru-id="${skill.guruId}" data-guru-name="${skill.guru}" data-translate="skills.chat">${translations[lang]['skills.chat']}</a>
+                                </div>
+                            </div>
+                        </div>
+                    `).join('');
+                    initSkillActions();
+                });
+
+                initSkillActions();
+            } catch (error) {
+                console.error('Error in updateSkillsContent:', error);
+            }
+        }
+
+        function updateUnreadBadge() {
+            try {
+                const unreadBadge = document.getElementById('unreadBadge');
+                if (!unreadBadge) {
+                    console.error('Element with ID unreadBadge not found');
+                    return;
+                }
+                const messages = JSON.parse(localStorage.getItem('messages') || '{}');
+                let unreadCount = 0;
+                Object.values(messages).forEach(chat => {
+                    unreadCount += chat.filter(msg => !msg.read && msg.sender !== 'user').length;
+                });
+                unreadBadge.textContent = unreadCount;
+                unreadBadge.style.display = unreadCount > 0 ? 'inline' : 'none';
+            } catch (error) {
+                console.error('Error in updateUnreadBadge:', error);
+            }
+        }
+
+        function initSkillActions() {
+            try {
+                const chatButtons = document.querySelectorAll('.btn-chat');
+                const bookButtons = document.querySelectorAll('.btn-book');
+                const chatModal = document.getElementById('chatModal');
+                const closeChatModal = document.getElementById('closeChatModal');
+                const chatTitle = document.getElementById('chatTitle');
+                const chatWindow = document.getElementById('chatWindow');
+                const messageInput = document.getElementById('messageInput');
+                const sendMessageBtn = document.getElementById('sendMessageBtn');
+                const typingIndicator = document.getElementById('typingIndicator');
+                const authModal = document.getElementById('authModal');
+                const authTitle = document.getElementById('authTitle');
+                const authMessage = document.getElementById('authMessage');
+                const lang = localStorage.getItem('preferredLanguage') || 'en';
+
+                if (!chatModal || !closeChatModal || !chatTitle || !chatWindow || !messageInput || !sendMessageBtn || !typingIndicator || !authModal || !authTitle || !authMessage) {
+                    console.error('One or more modal elements not found');
+                    return;
+                }
+
+                chatButtons.forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        if (localStorage.getItem('isLoggedIn') !== 'true') {
+                            authModal.style.display = 'flex';
+                            authTitle.textContent = translations[lang]['auth.login.title'];
+                            authMessage.style.display = 'block';
+                            authMessage.textContent = translations[lang]['auth.chatNotLoggedIn'];
+                            return;
+                        }
+                        const guruId = button.dataset.guruId;
+                        const guruName = button.dataset.guruName;
+                        chatTitle.textContent = `${translations[lang]['skills.chat']} ${guruName}`;
+                        chatModal.style.display = 'flex';
+                        loadChatMessages(guruId, guruName);
+                    });
+                });
+
+                bookButtons.forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        if (localStorage.getItem('isLoggedIn') !== 'true') {
+                            authModal.style.display = 'flex';
+                            authTitle.textContent = translations[lang]['auth.login.title'];
+                            authMessage.style.display = 'block';
+                            authMessage.textContent = translations[lang]['auth.bookNotLoggedIn'];
+                            return;
+                        }
+                        alert('Booking functionality to be implemented.');
+                    });
+                });
+
+                closeChatModal.addEventListener('click', () => {
+                    chatModal.style.display = 'none';
+                    messageInput.value = '';
+                    typingIndicator.style.display = 'none';
+                });
+
+                sendMessageBtn.addEventListener('click', () => {
+                    const message = messageInput.value.trim();
+                    if (message) {
+                        const guruId = chatTitle.textContent.split('Chat with ')[1];
+                        sendMessage(guruId, message, lang);
+                        messageInput.value = '';
+                    }
+                });
+
+                messageInput.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        sendMessageBtn.click();
+                    }
+                });
+
+                messageInput.addEventListener('input', () => {
+                    typingIndicator.style.display = 'block';
+                    setTimeout(() => {
+                        typingIndicator.style.display = 'none';
+                    }, 2000);
+                });
+            } catch (error) {
+                console.error('Error in initSkillActions:', error);
+            }
+        }
+
+        function loadChatMessages(guruId, guruName) {
+            try {
+                const chatWindow = document.getElementById('chatWindow');
+                if (!chatWindow) {
+                    console.error('Element with ID chatWindow not found');
+                    return;
+                }
+                let messages = JSON.parse(localStorage.getItem('messages') || '{}');
+                if (!messages[guruId]) {
+                    messages[guruId] = [
+                        { sender: 'guru', text: `Hi! I'm ${guruName}. How can I help you with this skill?`, timestamp: new Date().toLocaleTimeString(), read: true }
+                    ];
+                    localStorage.setItem('messages', JSON.stringify(messages));
+                }
+                chatWindow.innerHTML = messages[guruId].map(msg => `
+                    <div class="message-bubble ${msg.sender === 'user' ? 'user' : 'guru'}">
+                        ${msg.text}
+                        <small>${msg.timestamp}</small>
+                    </div>
+                `).join('');
+                chatWindow.scrollTop = chatWindow.scrollHeight;
+
+                // Simulate Guru reply
+                setTimeout(() => {
+                    const mockReplies = [
+                        `Thanks for reaching out! I can schedule a session this week.`,
+                        `What specific topics are you interested in learning?`,
+                        `My classes are hands-on, would you like to join?`
+                    ];
+                    const reply = mockReplies[Math.floor(Math.random() * mockReplies.length)];
+                    messages = JSON.parse(localStorage.getItem('messages') || '{}');
+                    messages[guruId].push({
+                        sender: 'guru',
+                        text: reply,
+                        timestamp: new Date().toLocaleTimeString(),
+                        read: false
+                    });
+                    localStorage.setItem('messages', JSON.stringify(messages));
+                    loadChatMessages(guruId, guruName);
+                    updateUnreadBadge();
+                }, 2000);
+            } catch (error) {
+                console.error('Error in loadChatMessages:', error);
+            }
+        }
+
+        function sendMessage(guruId, text, lang) {
+            try {
+                const chatWindow = document.getElementById('chatWindow');
+                if (!chatWindow) {
+                    console.error('Element with ID chatWindow not found');
+                    return;
+                }
+                let messages = JSON.parse(localStorage.getItem('messages') || '{}');
+                if (!messages[guruId]) messages[guruId] = [];
+                messages[guruId].push({
+                    sender: 'user',
+                    text: text,
+                    timestamp: new Date().toLocaleTimeString(),
+                    read: true
+                });
+                localStorage.setItem('messages', JSON.stringify(messages));
+                loadChatMessages(guruId, translations[lang]['skills.chat'].split(' ')[0]);
+            } catch (error) {
+                console.error('Error in sendMessage:', error);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            try {
+                console.log('Browse page loaded');
+                initAuthModal();
+                initLanguageSelector();
+                updateAuthButtons();
+                const savedLanguage = localStorage.getItem('preferredLanguage') || 'en';
+                updateContentLanguage(savedLanguage);
+            } catch (error) {
+                console.error('Error in DOMContentLoaded:', error);
+            }
+        });
+    </script>
+</body>
+</html>

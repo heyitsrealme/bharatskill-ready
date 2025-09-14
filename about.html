@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-translate="about.title">About BharatSkill Connect</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Kalam:wght@400;700&display=stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px 0;
+        }
+        .team-card {
+            background: #fff;
+            border: 2px solid #ddd;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .team-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        .team-card:nth-child(1) { border-color: #4a6bdf; background: linear-gradient(180deg, #4a6bdf10, #fff); }
+        .team-card:nth-child(2) { border-color: #2ecc71; background: linear-gradient(180deg, #2ecc7110, #fff); }
+        .team-card:nth-child(3) { border-color: #e67e22; background: linear-gradient(180deg, #e67e2210, #fff); }
+        .team-image {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #ccc, #eee);
+            margin: 0 auto 15px;
+            overflow: hidden;
+        }
+        .team-card h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 10px 0;
+            color: #333;
+        }
+        .team-card p:first-of-type {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #4a6bdf;
+            margin-bottom: 10px;
+        }
+        .team-card p:last-of-type {
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.5;
+        }
+        .about-content p {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-hands-helping"></i>
+                    <h3 data-translate="header.title">BharatSkill Connect</h3>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="index.html" class="nav-home" data-translate="nav.home">Home</a></li>
+                        <li><a href="browse.html" class="nav-browse" data-translate="nav.browse">Browse Skills</a></li>
+                       
+                        <li><a href="about.html" class="nav-about active" data-translate="nav.about">About Us</a></li>
+                        <li><a href="profile.html" class="nav-profile" data-translate="nav.profile">Profile</a></li>
+                    </ul>
+                </nav>
+                <div class="auth-buttons">
+                    <button class="btn btn-outline" id="loginBtn" data-translate="auth.login">Login</button>
+                    <button class="btn btn-primary" id="signupBtn" data-translate="auth.signup">Sign Up</button>
+                    <button class="btn btn-outline" id="logoutBtn" style="display: none;" data-translate="auth.logout">Logout</button>
+                    <button class="btn btn-primary" id="listSkillBtn" style="display: none;" data-translate="auth.listSkill">List Your Skill</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="main-content container">
+        <section class="about-content">
+            <div class="section-title">
+                <h2 data-translate="about.title">About BharatSkill Connect</h2>
+            </div>
+            <p data-translate="about.description1">BharatSkill Connect is a hyperlocal platform designed to bridge the gap between Gurus (mentors) and Shishyas (learners), enabling seamless skill exchange within local communities.</p>
+            <p data-translate="about.description2">Our mission is to empower individuals through knowledge-sharing by offering an accessible and trusted space for learning, teaching, and collaboration. Whether it’s a professional skill, a creative art, or a life-enhancing hobby, BharatSkill Connect makes it possible to learn directly from people around you.</p>
+            <p data-translate="about.description3">We envision a vibrant, self-sustaining ecosystem where everyone has the opportunity to contribute their expertise and grow through the knowledge of others. By fostering meaningful connections, we aim to build skill-rich communities across India, driving both personal and collective growth.</p>
+        </section>
+
+        <section class="team">
+            <div class="section-title">
+                <h2 data-translate="team.title">Our Team</h2>
+                <p data-translate="team.subtitle">Meet the passionate individuals behind BharatSkill Connect</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-image"></div>
+                    <h3>Arjun Patel</h3>
+                    <p data-translate="team.founder">Founder & CEO</p>
+                    <p>Arjun is dedicated to empowering communities through skill-sharing and technology.</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-image"></div>
+                    <h3>Neha Sharma</h3>
+                    <p data-translate="team.cto">Chief Technology Officer</p>
+                    <p>Neha leads the development of our platform, ensuring a seamless user experience.</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-image"></div>
+                    <h3>Rajesh Kumar</h3>
+                    <p data-translate="team.community">Community Manager</p>
+                    <p>Rajesh fosters connections between Gurus and Shishyas across India.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3 data-translate="footer.title">BharatSkill Connect</h3>
+                    <p data-translate="footer.description">Empowering communities through skill exchange and learning.</p>
+                </div>
+                <div class="footer-column">
+                    <h3 data-translate="footer.links.title">Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html" class="nav-home" data-translate="nav.home">Home</a></li>
+                        <li><a href="browse.html" class="nav-browse" data-translate="nav.browse">Browse Skills</a></li>
+                        <li><a href="dashboard.html" class="nav-dashboard" data-translate="nav.dashboard">Dashboard</a></li>
+                        <li><a href="about.html" class="nav-about" data-translate="nav.about">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3 data-translate="footer.legal.title">Legal</h3>
+                    <ul>
+                        <li><a href="#" data-translate="footer.legal.privacy">Privacy Policy</a></li>
+                        <li><a href="#" data-translate="footer.legal.terms">Terms of Service</a></li>
+                        <li><a href="#" data-translate="footer.legal.safety">Safety Guidelines</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3 data-translate="footer.follow.title">Follow Us</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright" data-translate="footer.copyright">&copy; 2025 BharatSkill Connect. All rights reserved.</div>
+        </div>
+    </footer>
+
+    <div class="modal" id="authModal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeAuthModal">&times;</span>
+            <h2 class="modal-title" id="authTitle" data-translate="auth.login.title">Login</h2>
+            <form id="authForm">
+                <div class="form-group">
+                    <label for="email" data-translate="auth.email.label">Email</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password" data-translate="auth.password.label">Password</label>
+                    <input type="password" id="password" required>
+                </div>
+                <button type="submit" class="btn btn-primary" id="authSubmit" style="width: 100%;" data-translate="auth.login.button">Login</button>
+            </form>
+            <p style="margin-top: 15px; text-align: center;" data-translate="auth.switch.text">
+                Don't have an account? <a href="#" id="switchToSignup" data-translate="auth.switch.signup">Signup here</a>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        const translations = {
+            'en': {
+                'header.title': 'BharatSkill Connect',
+                'nav.home': 'Home',
+                'nav.browse': 'Browse Skills',
+                'nav.messages': 'Messages',
+                'nav.dashboard': 'Dashboard',
+                'nav.about': 'About Us',
+                'nav.profile': 'Profile',
+                'auth.login': 'Login',
+                'auth.signup': 'Sign Up',
+                'auth.logout': 'Logout',
+                'auth.listSkill': 'List Your Skill',
+                'auth.login.title': 'Login',
+                'auth.signup.title': 'Sign Up',
+                'auth.login.button': 'Login',
+                'auth.signup.button': 'Sign Up',
+                'auth.email.label': 'Email',
+                'auth.password.label': 'Password',
+                'auth.switch.text': "Don't have an account?",
+                'auth.switch.signup': 'Signup here',
+                'auth.switch.login': 'Login here',
+                'about.title': 'About BharatSkill Connect',
+                'about.description1': 'BharatSkill Connect is a hyperlocal platform designed to bridge the gap between Gurus (mentors) and Shishyas (learners), enabling seamless skill exchange within local communities.',
+                'about.description2': 'Our mission is to empower individuals through knowledge-sharing by offering an accessible and trusted space for learning, teaching, and collaboration. Whether it’s a professional skill, a creative art, or a life-enhancing hobby, BharatSkill Connect makes it possible to learn directly from people around you.',
+                'about.description3': 'We envision a vibrant, self-sustaining ecosystem where everyone has the opportunity to contribute their expertise and grow through the knowledge of others. By fostering meaningful connections, we aim to build skill-rich communities across India, driving both personal and collective growth.',
+                'team.title': 'Our Team',
+                'team.subtitle': 'Meet the passionate individuals behind BharatSkill Connect',
+                'team.founder': 'Founder & CEO',
+                'team.cto': 'Chief Technology Officer',
+                'team.community': 'Community Manager',
+                'footer.title': 'BharatSkill Connect',
+                'footer.description': 'Empowering communities through skill exchange and learning.',
+                'footer.links.title': 'Quick Links',
+                'footer.legal.title': 'Legal',
+                'footer.legal.privacy': 'Privacy Policy',
+                'footer.legal.terms': 'Terms of Service',
+                'footer.legal.safety': 'Safety Guidelines',
+                'footer.follow.title': 'Follow Us',
+                'footer.copyright': '© 2025 BharatSkill Connect. All rights reserved.'
+            },
+            'hi': {
+                'header.title': 'भारतस्किल कनेक्ट',
+                'nav.home': 'होम',
+                'nav.browse': 'कौशल ब्राउज़ करें',
+                'nav.messages': 'संदेश',
+                'nav.dashboard': 'डैशबोर्ड',
+                'nav.about': 'हमारे बारे में',
+                'nav.profile': 'प्रोफ़ाइल',
+                'auth.login': 'लॉगिन',
+                'auth.signup': 'साइन अप',
+                'auth.logout': 'लॉगआउट',
+                'auth.listSkill': 'अपना कौशल सूचीबद्ध करें',
+                'auth.login.title': 'लॉगिन',
+                'auth.signup.title': 'साइन अप',
+                'auth.login.button': 'लॉगिन',
+                'auth.signup.button': 'साइन अप',
+                'auth.email.label': 'ईमेल',
+                'auth.password.label': 'पासवर्ड',
+                'auth.switch.text': 'खाता नहीं है?',
+                'auth.switch.signup': 'यहां साइन अप करें',
+                'auth.switch.login': 'यहां लॉगिन करें',
+                'about.title': 'भारतस्किल कनेक्ट के बारे में',
+                'about.description1': 'भारतस्किल कनेक्ट एक हाइपरलोकल मंच है जो गुरुओं (मेंटर्स) और शिष्यों (सीखने वालों) के बीच की खाई को पाटने के लिए डिज़ाइन किया गया है, जो स्थानीय समुदायों के भीतर निर्बाध कौशल विनिमय को सक्षम बनाता है।',
+                'about.description2': 'हमारा मिशन ज्ञान-साझाकरण के माध्यम से व्यक्तियों को सशक्त बनाना है, एक सुलभ और विश्वसनीय स्थान प्रदान करके जिसमें सीखना, सिखाना और सहयोग करना संभव हो। चाहे वह पेशेवर कौशल हो, रचनात्मक कला हो, या जीवन को बेहतर बनाने वाला शौक, भारतस्किल कनेक्ट आपके आसपास के लोगों से सीधे सीखना संभव बनाता है।',
+                'about.description3': 'हम एक जीवंत, स्व-टिकाऊ पारिस्थितिकी तंत्र की कल्पना करते हैं जहां हर किसी को अपनी विशेषज्ञता साझा करने और दूसरों के ज्ञान से बढ़ने का अवसर मिले। सार्थक संबंधों को बढ़ावा देकर, हम भारत भर में कौशल-संपन्न समुदायों का निर्माण करने का लक्ष्य रखते हैं, जो व्यक्तिगत और सामूहिक विकास को प्रेरित करता है।',
+                'team.title': 'हमारी टीम',
+                'team.subtitle': 'भारतस्किल कनेक्ट के पीछे उत्साही व्यक्तियों से मिलें',
+                'team.founder': 'संस्थापक और सीईओ',
+                'team.cto': 'मुख्य प्रौद्योगिकी अधिकारी',
+                'team.community': 'समुदाय प्रबंधक',
+                'footer.title': 'भारतस्किल कनेक्ट',
+                'footer.description': 'कौशल विनिमय और सीखने के माध्यम से समुदायों को सशक्त बनाना।',
+                'footer.links.title': 'त्वरित लिंक',
+                'footer.legal.title': 'कानूनी',
+                'footer.legal.privacy': 'गोपनीयता नीति',
+                'footer.legal.terms': 'सेवा की शर्तें',
+                'footer.legal.safety': 'सुरक्षा दिशानिर्देश',
+                'footer.follow.title': 'हमें फॉलो करें',
+                'footer.copyright': '© 2025 भारतस्किल कनेक्ट। सभी अधिकार सुरक्षित।'
+            },
+            'gu': {
+                'header.title': 'ભારતસ્કિલ કનેક્ટ',
+                'nav.home': 'હોમ',
+                'nav.browse': 'કૌશલ્યો બ્રાઉઝ કરો',
+                'nav.messages': 'સંદેશા',
+                'nav.dashboard': 'ડેશબોર્ડ',
+                'nav.about': 'અમારા વિશે',
+                'nav.profile': 'પ્રોફાઇલ',
+                'auth.login': 'લૉગિન',
+                'auth.signup': 'સાઇન અપ',
+                'auth.logout': 'લૉગઆઉટ',
+                'auth.listSkill': 'તમારું કૌશલ્ય સૂચિબદ્ધ કરો',
+                'auth.login.title': 'લૉગિન',
+                'auth.signup.title': 'સાઇન અપ',
+                'auth.login.button': 'લૉગિન',
+                'auth.signup.button': 'સાઇન અપ',
+                'auth.email.label': 'ઈમેલ',
+                'auth.password.label': 'પાસવર્ડ',
+                'auth.switch.text': 'ખાતું નથી?',
+                'auth.switch.signup': 'અહીં સાઇન અપ કરો',
+                'auth.switch.login': 'અહીં લૉગિન કરો',
+                'about.title': 'ભારતસ્કિલ કનેક્ટ વિશે',
+                'about.description1': 'ભારતસ્કિલ કનેક્ટ એક હાઇપરલોકલ પ્લેટફોર્મ છે જે ગુરુઓ (માર્ગદર્શકો) અને શિષ્યો (શીખનારાઓ) વચ્ચેનું અંતર દૂર કરવા માટે રચાયેલું છે, જે સ્થાનિક સમુદાયોમાં સીમલેસ કૌશલ્ય વિનિમયને સક્ષમ બનાવે છે।',
+                'about.description2': 'અમારું મિશન જ્ઞાન-વહેંચણી દ્વારા વ્યક્તિઓને સશક્ત બનાવવાનું છે, એક સુલભ અને વિશ્વસનીય જગ્યા પૂરી પાડીને જ્યાં શીખવું, શીખવવું અને સહયોગ કરવું શક્ય બને. ભલે તે વ્યાવસાયિક કૌશલ્ય હોય, સર્જનાત્મક કળા હોય, કે જીવનને સુધારતો શોખ હોય, ભારતસ્કિલ કનેક્ટ તમારી આસપાસના લોકો પાસેથી સીધું શીખવાનું શક્ય બનાવે છે।',
+                'about.description3': 'અમે એક જીવંત, સ્વ-નિર્ભર ઇકોસિસ્ટમની કલ્પના કરીએ છીએ જ્યાં દરેકને પોતાની કુશળતા યોગદાન આપવાની અને અન્યના જ્ઞાન દ્વારા વિકાસ કરવાની તક મળે. અર્થપૂર્ણ જોડાણોને પ્રોત્સાહન આપીને, અમે ભારતભરમાં કૌશલ્ય-સમૃદ્ધ સમુદાયો બનાવવાનું લક્ષ્ય રાખીએ છીએ, જે વ્યક્તિગત અને સામૂહિક વિકાસને પ્રેરણા આપે છે।',
+                'team.title': 'અમારી ટીમ',
+                'team.subtitle': 'ભારતસ્કિલ કનેક્ટ પાછળના ઉત્સાહી વ્યક્તિઓને મળો',
+                'team.founder': 'સ્થાપક અને સીઈઓ',
+                'team.cto': 'મુખ્ય ટેકનોલોજી અધિકારી',
+                'team.community': 'સમુદાય વ્યવસ્થાપક',
+                'footer.title': 'ભારતસ્કિલ કનેક્ટ',
+                'footer.description': 'કૌશલ્ય વિનિમય અને શીખવા દ્વારા સમુદાયોને સશક્ત બનાવવું.',
+                'footer.links.title': 'ઝડપી લિંક્સ',
+                'footer.legal.title': 'કાયદેસર',
+                'footer.legal.privacy': 'ગોપનીયતા નીતિ',
+                'footer.legal.terms': 'સેવાની શરતો',
+                'footer.legal.safety': 'સલામતી માર્ગદર્શિકા',
+                'footer.follow.title': 'અમને અનુસરો',
+                'footer.copyright': '© 2025 ભારતસ્કિલ કનેક્ટ. બધા હક્કો અનામત.'
+            }
+        };
+
+        function updateContentLanguage(lang) {
+            try {
+                document.querySelectorAll('[data-translate]').forEach(element => {
+                    const key = element.getAttribute('data-translate');
+                    if (translations[lang] && translations[lang][key]) {
+                        element.textContent = translations[lang][key];
+                    } else {
+                        console.warn(`Translation missing for key: ${key} in language: ${lang}`);
+                    }
+                });
+                const currentLanguage = document.getElementById('currentLanguage');
+                if (currentLanguage) {
+                    currentLanguage.textContent = lang === 'en' ? 'English' : lang === 'hi' ? 'हिन्दी (Hindi)' : 'ગુજરાતી (Gujarati)';
+                } else {
+                    console.error('Element with ID currentLanguage not found');
+                }
+                const languageDropdown = document.getElementById('languageDropdown');
+                if (languageDropdown) {
+                    languageDropdown.querySelectorAll('.language-option').forEach(option => {
+                        option.classList.toggle('active', option.dataset.lang === lang);
+                    });
+                } else {
+                    console.error('Element with ID languageDropdown not found');
+                }
+            } catch (error) {
+                console.error('Error in updateContentLanguage:', error);
+            }
+        }
+
+        function updateAuthButtons() {
+            try {
+                const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+                const loginBtn = document.getElementById('loginBtn');
+                const signupBtn = document.getElementById('signupBtn');
+                const logoutBtn = document.getElementById('logoutBtn');
+                const listSkillBtn = document.getElementById('listSkillBtn');
+                if (loginBtn) loginBtn.style.display = isLoggedIn ? 'none' : 'inline-block';
+                else console.error('Element with ID loginBtn not found');
+                if (signupBtn) signupBtn.style.display = isLoggedIn ? 'none' : 'inline-block';
+                else console.error('Element with ID signupBtn not found');
+                if (logoutBtn) logoutBtn.style.display = isLoggedIn ? 'inline-block' : 'none';
+                else console.error('Element with ID logoutBtn not found');
+                if (listSkillBtn) listSkillBtn.style.display = isLoggedIn ? 'inline-block' : 'none';
+                else console.error('Element with ID listSkillBtn not found');
+            } catch (error) {
+                console.error('Error in updateAuthButtons:', error);
+            }
+        }
+
+        function initAuthModal() {
+            try {
+                const authModal = document.getElementById('authModal');
+                const closeAuthModal = document.getElementById('closeAuthModal');
+                const authForm = document.getElementById('authForm');
+                const authTitle = document.getElementById('authTitle');
+                const authSubmit = document.getElementById('authSubmit');
+                const switchToSignup = document.getElementById('switchToSignup');
+                const loginBtn = document.getElementById('loginBtn');
+                const signupBtn = document.getElementById('signupBtn');
+                const logoutBtn = document.getElementById('logoutBtn');
+
+                if (!authModal || !closeAuthModal || !authForm || !authTitle || !authSubmit || !switchToSignup || !loginBtn || !signupBtn || !logoutBtn) {
+                    console.error('One or more auth modal elements not found');
+                    return;
+                }
+
+                let isSignup = false;
+
+                loginBtn.addEventListener('click', () => {
+                    authModal.style.display = 'flex';
+                    authTitle.textContent = translations[localStorage.getItem('preferredLanguage') || 'en']['auth.login.title'];
+                    authSubmit.textContent = translations[localStorage.getItem('preferredLanguage') || 'en']['auth.login.button'];
+                    isSignup = false;
+                });
+
+                signupBtn.addEventListener('click', () => {
+                    authModal.style.display = 'flex';
+                    authTitle.textContent = translations[localStorage.getItem('preferredLanguage') || 'en']['auth.signup.title'];
+                    authSubmit.textContent = translations[localStorage.getItem('preferredLanguage') || 'en']['auth.signup.button'];
+                    isSignup = true;
+                });
+
+                closeAuthModal.addEventListener('click', () => {
+                    authModal.style.display = 'none';
+                    authForm.reset();
+                });
+
+                switchToSignup.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    isSignup = !isSignup;
+                    authTitle.textContent = translations[localStorage.getItem('preferredLanguage') || 'en'][isSignup ? 'auth.signup.title' : 'auth.login.title'];
+                    authSubmit.textContent = translations[localStorage.getItem('preferredLanguage') || 'en'][isSignup ? 'auth.signup.button' : 'auth.login.button'];
+                });
+
+                authForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const email = document.getElementById('email').value;
+                    const password = document.getElementById('password').value;
+                    if (isSignup) {
+                        localStorage.setItem('userEmail', email);
+                        localStorage.setItem('isLoggedIn', 'true');
+                        alert('Sign up successful!');
+                    } else {
+                        localStorage.setItem('userEmail', email);
+                        localStorage.setItem('isLoggedIn', 'true');
+                        alert('Login successful!');
+                    }
+                    authModal.style.display = 'none';
+                    authForm.reset();
+                    updateAuthButtons();
+                });
+
+                logoutBtn.addEventListener('click', () => {
+                    localStorage.removeItem('isLoggedIn');
+                    localStorage.removeItem('userEmail');
+                    updateAuthButtons();
+                    window.location.href = 'index.html';
+                });
+            } catch (error) {
+                console.error('Error in initAuthModal:', error);
+            }
+        }
+
+        function initLanguageSelector() {
+            try {
+                const languageBtn = document.getElementById('languageBtn');
+                const languageDropdown = document.getElementById('languageDropdown');
+                if (!languageBtn || !languageDropdown) {
+                    console.error('Language selector elements not found');
+                    return;
+                }
+                languageBtn.addEventListener('click', () => {
+                    languageDropdown.style.display = languageDropdown.style.display === 'block' ? 'none' : 'block';
+                });
+                languageDropdown.addEventListener('click', (e) => {
+                    const option = e.target.closest('.language-option');
+                    if (option) {
+                        const lang = option.dataset.lang;
+                        localStorage.setItem('preferredLanguage', lang);
+                        updateContentLanguage(lang);
+                        languageDropdown.style.display = 'none';
+                    }
+                });
+            } catch (error) {
+                console.error('Error in initLanguageSelector:', error);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            try {
+                console.log('About page loaded');
+                initAuthModal();
+                initLanguageSelector();
+                updateAuthButtons();
+                const savedLanguage = localStorage.getItem('preferredLanguage') || 'en';
+                updateContentLanguage(savedLanguage);
+            } catch (error) {
+                console.error('Error in DOMContentLoaded:', error);
+            }
+        });
+    </script>
+</body>
+</html>
